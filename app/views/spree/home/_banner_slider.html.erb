@@ -1,0 +1,65 @@
+<div class="full-screen-slider">
+    <div id="banner-slider-demo-4" class="owl-carousel owl-middle-narrow owl-banner-carousel owl-theme">
+        <div class="item" style="background: linear-gradient(rgb(232, 232, 232), rgb(240, 240, 240)) rgb(240, 240, 240); position: relative; overflow: hidden; width: 1404px; height: 687px;">
+            <div style="width:100%;height:100%;background:url(https://static.pexels.com/photos/171297/pexels-photo-171297.jpeg) 20% center no-repeat; background-size:cover;"></div>
+            <div class="slide2-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
+                <div class="container" style="height:100%;position:relative;">
+                    <div class="content-area" style="position:absolute;top:40%;right:20%;text-align:left;">
+                        <em style="display:block;line-height:1;color:#fff;font-weight:300;font-style:normal;">up to <b>70%</b> off!</em>
+                        <h2 style="font-weight:600;color:#fff;line-height:1;">HUGE <b style="font-weight:800;">SALE</b></h2>
+                        <p style="font-weight:600;color:#fff;line-height:1;">Fashion<span class="split">-</span>Electronics<span class="split">-</span>Gifts<span class="split">-</span>Music<span class="split">-</span>Sports</p>
+                        <div style="text-align:right;"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="btn btn-default" style="border:0;background-color:#fefefe;color:#777;font-weight:600;">SHOP NOW</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item" style="background: linear-gradient(rgb(232, 232, 232), rgb(240, 240, 240)) rgb(240, 240, 240); position: relative; overflow: hidden; width: 1404px; height: 687px;">
+            <div style="width:100%;height:100%;background:url(https://static.pexels.com/photos/96428/pexels-photo-96428.jpeg) center center no-repeat; background-size:cover;"></div>
+            <div class="slide3-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
+                <div class="container" style="height:100%;position:relative;">
+                    <div class="content-area" style="position:absolute;left:0;top:40%;text-align:center;width:100%;">
+                        <div style="display:inline-block;">
+                            <em style="display:block;line-height:1;margin:0;color:#fff;font-weight:300;font-style:normal;text-align:right;">It’s time to feel</em>
+                            <h2 style="font-weight:600;color:#fff;line-height:1;text-align:center;">THE <b style="font-weight:800;">POWER</b></h2>
+                            <div style="text-align:right;"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="btn btn-default" style="border:0;background-color:#fefefe;color:#777;font-weight:600;">SHOP NOW</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item" style="background: linear-gradient(rgb(232, 232, 232), rgb(240, 240, 240)) rgb(240, 240, 240); position: relative; overflow: hidden; width: 1404px; height: 687px;">
+            <div style="width:100%;height:100%;background:url('/assets/slide3.jpg') 80% center no-repeat; background-size:cover;"></div>
+            <div class="slide1-content" style="width:100%;height:100%;position:absolute;left:0;top:0;">
+                <div class="container" style="height:100%;position:relative;">
+                    <div class="content-area" style="position:absolute;top:37%;left:7%;text-align:center;">
+                        <div style="margin:0;line-height:1;">
+                            <%= image_tag("quote.png", class: "quote", style: "display:inline-block;vertical-align:middle;") %>
+                            <em style="display:inline-block;vertical-align:middle;line-height:1;color:#fff;font-weight:300;font-style:normal;">DO YOU NEED A NEW</em>
+                            <%= image_tag("quote.png", class: "quote", style: "display:inline-block;vertical-align:middle;") %>
+                        </div>
+                        <h2 style="font-weight:800;color:#fff;line-height:1;">eCOMMERCE?</h2>
+                        <p style="font-weight:300;color:#fff;line-height:1;">Check our options and features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function() {
+        $("#banner-slider-demo-4").owlCarousel({
+            items: 1,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            navRewind: true,
+            dots: false,
+            animateIn: 'fadeIn',
+            animateOut: 'fadeOut',
+            loop: true,
+            nav: true,
+            navText: ["<em class='porto-icon-chevron-left'></em>","<em class='porto-icon-chevron-right'></em>"]
+        });
+        $(".main-container").remove();
+    });
+</script>

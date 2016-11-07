@@ -1,0 +1,50 @@
+<div class="item product product-item">
+    <div class="product-item-info" data-container="product-grid">
+        <div class="product photo product-item-photo">
+            <a href="<%= product_path(product) %>" tabindex="-1">
+                <%= product_image(@product, itemprop: "image", class: "product-image-photo default_image ") %>
+            </a>
+        </div>
+        <div class="product details product-item-details">
+            <strong class="product name product-item-name">
+            <a class="product-item-link" href="<%= product_path(product) %>">
+              <%= product.name %>
+            </a>
+            </strong>
+            <div class="product-reviews-summary short">
+                <div class="rating-summary">
+                    <span class="label"><span>Rating:</span></span>
+                    <div class="rating-result" title="0%">
+                        <span style="width:0"><span>0%</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="price-box price-final_price" data-role="priceBox" data-product-id="2102">
+                <span class="price-container price-final_price tax weee">
+                <span id="product-price-2102" data-price-amount="75" data-price-type="finalPrice" class="price-wrapper ">
+                <span class="price">$<%= product.price %></span>    </span>
+                </span>
+            </div>
+            <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/2102/" href="javascript:void(0);"><span><em class="porto-icon-eye"></em>Quickview</span></a>                        
+            <div class="product-item-inner">
+                <div class="product actions product-item-actions">
+                    <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="action towishlist actions-secondary" title="Wish List" aria-label="Wish List" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/wishlist\/index\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;2102&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}" data-action="add-to-wishlist" role="button">
+                    <span>Wish List</span>
+                    </a>
+                    <div class="actions-primary">
+                        <form data-role="tocart-form" action="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/add/uenc/aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu/product/2102/" method="post">
+                            <input type="hidden" name="product" value="2102">
+                            <input type="hidden" name="uenc" value="aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2VuL2NoZWNrb3V0L2NhcnQvYWRkL3VlbmMvYUhSMGNEb3ZMM2QzZHk1dVpYZHpiV0Z5ZEhkaGRtVXVibVYwTDIxaFoyVnVkRzh5TDNCdmNuUnZMMlJsYlc4MFgyVnUvcHJvZHVjdC8yMTAyLw,,">
+                            <input name="form_key" type="hidden" value="chtq2Pnb4Wvgd7R9">                                            <button type="submit" title="Add to Cart" class="action tocart primary">
+                            <span>Add to Cart</span>
+                            </button>
+                        </form>
+                    </div>
+                    <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="action tocompare actions-secondary" title="Compare" aria-label="Compare" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/catalog\/product_compare\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;2102&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}" role="button">
+                    <span>Compare</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
