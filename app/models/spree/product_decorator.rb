@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  def default_image
-    images.first
+  def in_stock?
+    total_on_hand > 0
   end
 end
