@@ -45,22 +45,6 @@ $ ->
           return
 
       href = $('.header.links .authorization-link > a').attr('href')
-
-    if href.indexOf('logout') == -1
-      $('.block-header-customer-login').detach().appendTo '.authorization-link'
-      $('.block-header-customer-login').click (e) ->
-        e.stopPropagation()
-        return
-      $('html,body').click ->
-        if $('.block-header-customer-login').hasClass('open')
-          $('.block-header-customer-login').removeClass 'open'
-        return
-      $('.header.links .authorization-link > a').off('click').on 'click', ->
-        if !$('.block-header-customer-login').hasClass('open')
-          $('.block-header-customer-login').addClass 'open'
-        else
-          $('.block-header-customer-login').removeClass 'open'
-        false
     return
   return
 

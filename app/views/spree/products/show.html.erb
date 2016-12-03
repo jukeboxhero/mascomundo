@@ -51,7 +51,6 @@
 
 
 -->
-
 <% @body_class = "catalog-product-view product-men-s-t-shirt-1 page-layout-2columns-right layout-fullwidth wide" %>
 
 <div class="page-wrapper">
@@ -166,8 +165,8 @@
                     </div>
                 </div>
                 <div class="product media">
-                    <div class="gallery-placeholder" data-gallery-role="gallery-placeholder">
-                        <%= product_image(@product, itemprop: "image") %>
+                    <div class="gallery-placeholder fotorama" data-gallery-role="gallery-placeholder" data-width= "500px" data-minheight="665px">
+                        <%= large_image(@product, itemprop: "image") %>
                     </div>
                 </div>
                 <div class="product info detailed ">

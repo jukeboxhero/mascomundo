@@ -16,8 +16,8 @@ Spree.config do |config|
   Spree::Image.attachment_definitions[:attachment][:styles] = {
     :mini => '48x48>',
     :small => '100x100>',
-    :product => '300x400>',
-    :large => '600x600>'
+    :product => '260x300#',
+    :large => '900x1038#'
   }
 end
 

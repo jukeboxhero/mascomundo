@@ -6,3 +6,43 @@
   height:324px;  
   width:700px;
 }
+
+.logo img {
+  position: relative;
+  top: -12px;
+  left: 0;
+}
+
+header {
+  height: 120px;
+}
+
+.sticky-header {
+  .sticky-logo {
+    width: 50px;
+  }
+
+  nav.navigation.sw-megamenu {
+    ul {
+      padding-top: 10px;
+    }
+  }
+
+  .minicart-wrapper {
+    right: 20px !important;
+    top: 64% !important;
+  }
+}
+
+header:not(.sticky-header) {
+  .nav-sections {
+    top: 55% !important;
+  }
+  .panel.header {
+    top: 54% !important;
+  }
+}
+
+.porto-icon-search {
+  border: none;
+}

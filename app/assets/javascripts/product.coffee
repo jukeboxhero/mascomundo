@@ -11,10 +11,8 @@ $ ->
     false
 
   loaded = false
-
   $('.product.media .gallery-placeholder').bind 'DOMSubtreeModified', ->
     $('.product.media .fotorama').on 'fotorama:ready', (e, fotorama, extra) ->
-      #console.log('fotorama is loaded');
       loaded = false
       $('.product.media .fotorama').on 'fotorama:load', (e, fotorama, extra) ->
         if !loaded
@@ -55,7 +53,8 @@ $ ->
         quickview.displayContent prodUrl
       return
 
-    $(".sw-megamenu").swMegamenu();
+  $(".sw-megamenu").swMegamenu();
+  $('.gallery-placeholder').fotorama();
 
 window.weltpixel_quickview =
   'baseUrl': 'http://www.newsmartwave.net/magento2/porto/demo4_en/'

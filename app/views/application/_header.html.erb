@@ -1,7 +1,7 @@
 <header class="page-header type4">
     <div class="header content">
         <strong class="logo">
-            <%= image_tag("logo_white_plus.png", size: "109x50") %>
+            <%= image_tag("mm_logo_white_2.svg", size: "280x50") %>
         </strong>
         <div class="sections nav-sections">
             <div class="section-items nav-sections-items" role="tablist">
@@ -13,6 +13,53 @@
                                     <span>Home</span>
                                 <% end %>
                             </li>
+
+                            <% @categories.each do |category| %>
+                                <li class="ui-menu-item level0 staticwidth parent">
+                                    <div class="open-children-toggle"></div>
+                                    <%= link_to nested_taxons_path(id: category.permalink), class: "level-top" do %>
+                                        <span><%= category.name %></span>
+                                        <span class="cat-label cat-label-label1">New</span>
+                                    <% end %>
+
+                                    <% if !!category.children %>
+                                        <div class="level0 submenu" style="width: 600px; left: -9999px; right: auto;">
+                                            <div class="row">
+                                                <ul class="subchildmenu col-sm-7 mega-columns columns2">
+                                                    <% category.children.each do |topic| %>
+                                                        <li class="ui-menu-item level1 parent ">
+                                                            <div class="open-children-toggle"></div>
+                                                            <%= link_to nested_taxons_path(id: topic.permalink) do %>
+                                                                <span><%= topic.name %></span>
+                                                            <% end %>
+
+                                                            <% if !!topic.children %>
+                                                                <ul class="subchildmenu ">
+                                                                    <% topic.children.each do |subcategory| %>
+                                                                        <li class="ui-menu-item level2 parent ">
+                                                                            <div class="open-children-toggle"></div>
+                                                                            <%= link_to nested_taxons_path(id: subcategory.permalink) do %>
+                                                                                <span><%= subcategory.name %></span>
+                                                                            <% end %>
+                                                                        </li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            <% end %>
+                                                        </li>
+                                                    <% end %>
+                                                </ul>
+                                                <div class="menu-right-block col-sm-5">
+                                                    <p style="margin: 0;">
+                                                        <%= image_tag(category.icon.url(:large), size: "109x50", style: "position: absolute; right: -3px; top: -5px; height: 269px; width: auto; max-width: none; z-index: -1; border-radius: 8px;") %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </li>
+                            <% end %>
+
+
                             <li class="ui-menu-item level0 staticwidth parent ">
                                 <div class="open-children-toggle"></div>
 
@@ -178,99 +225,9 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="ui-menu-item level0 fullwidth parent ">
-                                <div class="open-children-toggle"></div>
-                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics.html" class="level-top"><span>Cat</span></a>
-                                <div class="level0 submenu">
-                                    <div class="menu-top-block">
-                                        <div style="margin: 0 10px; padding: 10px 0 15px; border-bottom: 1px solid #eee; width: 63%; color: #000;"><strong style="margin-right: 10px;">SUGGESTIONS:</strong><a style="margin-right: 5px; color: #000;" href="http://www.newsmartwave.net/magento2/porto/demo4_en#">3D</a><a style="margin-right: 5px; color: #000;" href="http://www.newsmartwave.net/magento2/porto/demo4_en#">MOBILE</a><a style="margin-right: 5px; color: #000;" href="http://www.newsmartwave.net/magento2/porto/demo4_en#">CAMERAS</a><a style="color: #000;" href="http://www.newsmartwave.net/magento2/porto/demo4_en#">HEADSETS</a></div>
-                                    </div>
-                                    <div class="row">
-                                        <ul class="subchildmenu col-sm-8 mega-columns columns3">
-                                            <li class="ui-menu-item level1 parent ">
-                                                <div class="open-children-toggle"></div>
-                                                <div class="menu-thumb-img">
-                                                    <a class="menu-thumb-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs.html">
-                                                    <%= image_tag("smart_tv.png") %>
-                                                    </a>
-                                                </div>
-                                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs.html"><span>Smart TVs</span></a>
-                                                <ul class="subchildmenu ">
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/tv-audio.html"><span>TV, Audio</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/computers-tablets.html"><span>Computers &amp; Tablets</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/home-office-equipments.html"><span>Home Office Equipments</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/gps-navigation.html"><span>GPS Navigation</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/car-audio-video-gps.html"><span>Car Audio, Video &amp; GPS</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/smart-tvs/radios-clock-radios.html"><span>Radios &amp; Clock Radios</span></a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="ui-menu-item level1 parent ">
-                                                <div class="open-children-toggle"></div>
-                                                <div class="menu-thumb-img"><a class="menu-thumb-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras.html">
-                                                    <%= image_tag("camera.png") %>
-                                                    </a>
-                                                </div>
-                                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras.html"><span>Cameras</span></a>
-                                                <ul class="subchildmenu ">
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/cell-phones-accessories.html"><span>Cell Phones &amp; Accessories</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/cameras-photo.html"><span>Cameras &amp; Photo</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/photo-accessories.html"><span>Photo Accessories</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/ip-phones.html"><span>IP Phones</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/samsung-galaxy-phones.html"><span>Samsung Galaxy Phones</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/cameras/ipad-android-tablets.html"><span>iPad &amp; Android Tablets</span></a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="ui-menu-item level1 parent ">
-                                                <div class="open-children-toggle"></div>
-                                                <div class="menu-thumb-img"><a class="menu-thumb-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games.html">
-                                                    <%= image_tag("game.png") %>
-                                                    </a>
-                                                </div>
-                                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games.html"><span>Games</span></a>
-                                                <ul class="subchildmenu ">
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/e-book-readers.html"><span>e-Book Readers</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/video-games-consolers.html"><span>Video Games &amp; Consolers</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/printers-scanners.html"><span>Printers &amp; Scanners</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/digital-picture-frames.html"><span>Digital Picture Frames</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/3d-fashion-games.html"><span>3D Fashion Games</span></a></li>
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/electronics/games/game-machine-devices.html"><span>Game Machine &amp; Devices</span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <div class="menu-right-block col-sm-4">
-                                            <div class="menu-right-block" style="position: relative; text-align: center;">
-                                                <%= image_tag("electronic.png", style: "margin-top: 20px;") %>
-                                                <div style="position: absolute; top: -35px; left: -15px; text-align: left;">
-                                                    <h2 style="font-size: 23px; font-weight: 600; color: #fff; background-color: #2e2e2e; line-height: 1; padding: 6px 50px 6px 8px; margin: 0 0 10px;">SHOP NOW <strong style="font-weight: bold;">3D</strong> <strong style="font-weight: 800;">TV's</strong></h2>
-                                                    <a class="btn btn-default" style="padding: 5px 7px 5px 15px; color: #fff; border: 0; font-size: 13px;" href="http://www.newsmartwave.net/magento2/porto/demo4_en#">VIEW NOW <em class="porto-icon-right-dir"></em></a>
-                                                </div>
-                                                <div style="position: absolute; bottom: 8px; width: 60%; text-align: center; left: 50px; line-height: 14px; font-size: 13px;">This is a custom block. You can add any images or links here.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            
                             <li class="ui-menu-item level0 fullwidth "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/home-garden.html" class="level-top"><span>Fish</span></a></li>
-                            <li class="ui-menu-item level0 classic parent ">
-                                <div class="open-children-toggle"></div>
-                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/gear.html" class="level-top"><span>Reptile</span></a>
-                                <div class="level0 submenu" style="left: -9999px; right: auto;">
-                                    <div class="row">
-                                        <ul class="subchildmenu ">
-                                            <li class="ui-menu-item level1 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/gear/bags.html"><span>Bags</span></a></li>
-                                            <li class="ui-menu-item level1 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/gear/fitness-equipment.html"><span>Fitness Equipment</span></a></li>
-                                            <li class="ui-menu-item level1 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/gear/watches.html"><span>Watches</span></a></li>
-                                            <li class="ui-menu-item level1 parent ">
-                                                <div class="open-children-toggle"></div>
-                                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/gear/training.html"><span>Training</span></a>
-                                                <ul class="subchildmenu " style="left: -9999px; right: auto;">
-                                                    <li class="ui-menu-item level2 "><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/training/training-video.html"><span>Video Download</span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
+                            
                             <li class="ui-menu-item level0 classic parent">
                                 <div class="open-children-toggle"></div>
                                 <a href="javascript:void(0)" class="level-top"><span>Small Pet</span></a>
@@ -576,23 +533,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="switcher currency switcher-currency" id="switcher-currency-nav">
-                        <strong class="label switcher-label"><span>Currency</span></strong>
-                        <div class="actions dropdown options switcher-options">
-                            <div class="action toggle switcher-trigger" id="switcher-currency-trigger-nav">
-                                <strong class="language-USD">
-                                <span>USD - US Dollar</span>
-                                </strong>
-                            </div>
-                            <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front mage-dropdown-dialog" tabindex="-1" role="dialog" aria-describedby="ui-id-2" style="display: none;">
-                                <ul class="dropdown switcher-dropdown ui-dialog-content ui-widget-content" id="ui-id-2" style="display: block;">
-                                    <li class="currency-EUR switcher-option">
-                                        <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/directory\/currency\/switch\/&quot;,&quot;data&quot;:{&quot;currency&quot;:&quot;EUR&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}">EUR - Euro</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -670,23 +610,6 @@
                 </div>
             </div>
             <div class="bottom-panel">
-                <div class="switcher currency switcher-currency" id="switcher-currency">
-                    <strong class="label switcher-label"><span>Currency</span></strong>
-                    <div class="actions dropdown options switcher-options">
-                        <div class="action toggle switcher-trigger" id="switcher-currency-trigger">
-                            <strong class="language-USD">
-                            <span>USD - US Dollar</span>
-                            </strong>
-                        </div>
-                        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front mage-dropdown-dialog" tabindex="-1" role="dialog" aria-describedby="ui-id-3" style="display: none;">
-                            <ul class="dropdown switcher-dropdown ui-dialog-content ui-widget-content" id="ui-id-3" style="display: block;">
-                                <li class="currency-EUR switcher-option">
-                                    <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/directory\/currency\/switch\/&quot;,&quot;data&quot;:{&quot;currency&quot;:&quot;EUR&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}">EUR - Euro</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
                 <div class="switcher language switcher-language" data-ui-id="language-switcher" id="switcher-language">
                     <strong class="label switcher-label"><span>Language</span></strong>
                     <div class="actions dropdown options switcher-options">

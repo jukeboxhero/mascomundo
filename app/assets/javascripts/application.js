@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 
 // TODO: See which ones of the following are necessary and remove otherwise
 //= require jquery.mobile.custom
 //= require jquery.cookie
 //- require jquery.fancybox
+//= require jquery-ui
 //= require sw_megamenu
 //= require owl.carousel.min
+//= require fotorama
+//= require fotorama-add-video-events
 //= require_tree .

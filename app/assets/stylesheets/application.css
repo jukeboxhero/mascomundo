@@ -12,6 +12,7 @@
  *
  *= require 'template/styles-m'
  *= require 'template/styles-l'
+ *= require 'template/gallery'
  *= require_tree .
  *= require_self
  */
