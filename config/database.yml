@@ -21,6 +21,3 @@ test:
   <<: *default
   database: masco_mundo_test
 
-production:
-  <<: *default
-  database: db/production.sqlite3
