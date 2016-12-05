@@ -1,4 +1,9 @@
-
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
 default: &default
   adapter: mysql2
   username: root
@@ -16,3 +21,14 @@ test:
   <<: *default
   database: masco_mundo_test
 
+staging:
+  adapter: postgresql
+  username: root
+  socket: /tmp/mysql.sock
+  database: masco_mundo_staging
+  pool: 40
+
+production:
+  adapter: mysql2
+  username: root
+  database: masco_mundo
