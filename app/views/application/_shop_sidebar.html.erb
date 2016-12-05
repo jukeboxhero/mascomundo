@@ -1,0 +1,686 @@
+<div class="sidebar sidebar-main">
+    <div class="block block-category-list">
+        <% unless @taxon.children.blank? %>
+            <div class="block-title">
+                <strong><%= @taxon.name %></strong>
+            </div>
+            <div class="block-content">
+                <ol class="items">
+                    <% @taxon.children.each do |child| %>
+                        <li class="item">
+                            <%= link_to child.name, nested_taxons_path(id: child.permalink) %>
+                        </li>
+                    <% end %>
+                </ol>
+            </div>
+        <% end %>
+    </div>
+    <div class="block filter" id="layered-filter-block" data-collapsible="true">
+        <div class="block-title filter-title" data-count="1" role="tablist">
+            <strong data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Filter</strong>
+        </div>
+        <div class="block-content filter-content">
+            <div class="filter-current" data-collapsible="true" role="tablist">
+                <strong class="block-subtitle filter-current-subtitle" role="tab" aria-level="2" data-role="title" data-count="1" aria-selected="false" aria-expanded="false" tabindex="0">Now Shopping by</strong>
+                <ol class="items">
+                    <li class="item">
+                        <span class="filter-label">Color</span>
+                        <span class="filter-value">Red</span>
+                        <a class="action remove" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" title="Remove Color Red">
+                            <span>Remove This Item</span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+            <div class="block-actions filter-actions">
+                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" class="action clear filter-clear">
+                    <span>Clear All</span>
+                </a>
+            </div>
+            <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle">Shopping Options</strong>
+
+            <% @properties.each do |property| %>
+                <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
+                    <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                        <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><%= property.name %></div>
+                        <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                            <% product_properties = @product_properties.where(property_id: property.id) %>
+                            <% unless product_properties.blank? %>
+                                <ol class="items">
+                                    <% product_properties.each do |product_property| %>
+                                        <li class="item">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=202&amp;color=58">
+                                                <input type="checkbox"> <%= product_property.value %>
+                                                <span class="count">1
+             <span class="filter-count-label">
+             item</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    <% end %>
+                                </ol>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+
+            <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
+                <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Climate</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                        <ol class="items">
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=202&amp;color=58">
+                                    <input type="checkbox"> All-Weather
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=205&amp;color=58">
+                                    <input type="checkbox"> Indoor
+                                    <span class="count">4
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=206&amp;color=58">
+                                    <input type="checkbox"> Mild
+                                    <span class="count">2
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=208&amp;color=58">
+                                    <input type="checkbox"> Spring
+                                    <span class="count">2
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=209&amp;color=58">
+                                    <input type="checkbox"> Warm
+                                    <span class="count">4
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?climate=210&amp;color=58">
+                                    <input type="checkbox"> Windy
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item active" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="true" tabindex="0">Color</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="false">
+                        <div class="swatch-attribute swatch-layered color" attribute-code="color" attribute-id="90">
+                            <div class="swatch-attribute-options clearfix">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=49" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="49" option-label="Black" option-tooltip-thumb="" option-tooltip-value="#000000" style="background: #000000 no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=50" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="50" option-label="Blue" option-tooltip-thumb="" option-tooltip-value="#1857f7" style="background: #1857f7 no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=52" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="52" option-label="Gray" option-tooltip-thumb="" option-tooltip-value="#8f8f8f" style="background: #8f8f8f no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=53" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="53" option-label="Green" option-tooltip-thumb="" option-tooltip-value="#53a828" style="background: #53a828 no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=56" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="56" option-label="Orange" option-tooltip-thumb="" option-tooltip-value="#eb6703" style="background: #eb6703 no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=57" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="57" option-label="Purple" option-tooltip-thumb="" option-tooltip-value="#ef3dff" style="background: #ef3dff no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="58" option-label="Red" option-tooltip-thumb="" option-tooltip-value="#ff0000" style="background: #ff0000 no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=59" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="59" option-label="White" option-tooltip-thumb="" option-tooltip-value="#ffffff" style="background: #ffffff no-repeat center; background-size: initial;"></div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=60" class="swatch-option-link-layered">
+                                    <div class="swatch-option color " option-type="1" option-id="60" option-label="Yellow" option-tooltip-thumb="" option-tooltip-value="#ffd500" style="background: #ffd500 no-repeat center; background-size: initial;"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <script>
+                            require(["jquery", "jquery/ui", "Magento_Swatches/js/swatch-renderer"], function($) {
+                                $('.swatch-layered.color')
+                                    .find('[option-type="1"], [option-type="2"], [option-type="0"], [option-type="3"]')
+                                    .SwatchRendererTooltip();
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Material</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                        <ol class="items">
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=143">
+                                    <input type="checkbox"> Cocona® performance fabric
+                                    <span class="count">2
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=33">
+                                    <input type="checkbox"> Cotton
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=145">
+                                    <input type="checkbox"> Fleece
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=36">
+                                    <input type="checkbox"> Mesh
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=149">
+                                    <input type="checkbox"> Lycra®
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=37">
+                                    <input type="checkbox"> Nylon
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=38">
+                                    <input type="checkbox"> Polyester
+                                    <span class="count">2
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=151">
+                                    <input type="checkbox"> Spandex
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=154">
+                                    <input type="checkbox"> Organic Cotton
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=155">
+                                    <input type="checkbox"> TENCEL
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;material=159">
+                                    <input type="checkbox"> Wool
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Pattern</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                        <ol class="items">
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;pattern=195">
+                                    <input type="checkbox"> Color-Blocked
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;pattern=197">
+                                    <input type="checkbox"> Solid
+                                    <span class="count">4
+ <span class="filter-count-label">
+ items</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item active" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="true" tabindex="0">Price</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="false">
+                        <ol class="items">
+                            <li class="item">
+                                <div id="ln_price_attribute">
+                                    <div id="ln_price_slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" style="left: 0%;"></a>
+                                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" style="left: 100%;"></a>
+                                    </div>
+                                    <div id="ln_price_text">$29.00 - $75.00</div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item active" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="true" tabindex="0">Size</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="false">
+                        <div class="swatch-attribute swatch-layered size" attribute-code="size" attribute-id="137">
+                            <div class="swatch-attribute-options clearfix">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;size=167" class="swatch-option-link-layered">
+                                    <div class="swatch-option text " option-type="0" option-id="167" option-label="XS" option-tooltip-thumb="" option-tooltip-value="">XS</div>
+                                </a>
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;size=171" class="swatch-option-link-layered">
+                                    <div class="swatch-option text " option-type="0" option-id="171" option-label="XL" option-tooltip-thumb="" option-tooltip-value="">XL</div>
+                                </a>
+                            </div>
+                        </div>
+                        <script>
+                            require(["jquery", "jquery/ui", "Magento_Swatches/js/swatch-renderer"], function($) {
+                                $('.swatch-layered.size')
+                                    .find('[option-type="1"], [option-type="2"], [option-type="0"], [option-type="3"]')
+                                    .SwatchRendererTooltip();
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                    <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Style General</div>
+                    <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                        <ol class="items">
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=118">
+                                    <input type="checkbox"> Jacket
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=121">
+                                    <input type="checkbox"> Hooded
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=125">
+                                    <input type="checkbox"> Soft Shell
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=129">
+                                    <input type="checkbox"> Full Zip
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=131">
+                                    <input type="checkbox"> Bra
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=135">
+                                    <input type="checkbox"> Tank
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=136">
+                                    <input type="checkbox"> Tee
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=137">
+                                    <input type="checkbox"> Pullover
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="item">
+                                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58&amp;style_general=138">
+                                    <input type="checkbox"> Hoodie
+                                    <span class="count">1
+ <span class="filter-count-label">
+ item</span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div id="ln_overlay" class="ln_overlay">
+                <i class="ajax-loader large animate-spin"></i>
+            </div>
+        </div>
+    </div>
+    <h2 class="sidebar-title">Featured</h2>
+    <div class="sidebar-filterproducts custom-block" style="padding-bottom: 20px;">
+        <div id="featured_product" class="owl-top-narrow">
+            <div class="products wrapper grid side-list products-grid">
+                <div class="filterproducts products list items product-items owl-carousel owl-theme owl-loaded">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage" style="width: 638px; transform: translate3d(0px, 0px, 0px); transition: 0s;">
+                            <div class="owl-item active" style="width: 319px; margin-right: 0px;">
+                                <div class="item">
+                                    <div class="product product-item">
+                                        <div class="product-item-info" data-container="product-grid">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/cassia-funnel-sweatshirt.html" class="product photo product-item-photo" tabindex="-1">
+                                                <img class="product-image-photo default_image" src="./Tops &amp; Blouses - Women - Fashion_files/wh08-white_main.jpg" alt="Cassia Funnel Sweatshirt">
+                                                <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/1151/" href="javascript:void(0);">
+                                                    <span>
+ <em class="porto-icon-eye"></em>Quickview
+ </span>
+                                                </a>
+                                            </a>
+                                            <div class="product details product-item-details">
+                                                <strong class="product name product-item-name">
+ <a class="product-item-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/cassia-funnel-sweatshirt.html">
+ Cassia Funnel Sweatshirt </a>
+ </strong>
+                                                <div class="product-reviews-summary short">
+                                                    <div class="rating-summary">
+                                                        <span class="label">
+ <span>Rating:</span>
+                                                        </span>
+                                                        <div class="rating-result" title="0%">
+                                                            <span style="width:0">
+ <span>0%</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box price-final_price" data-role="priceBox" data-product-id="1151">
+                                                    <span class="price-container price-final_price tax weee">
+ <span id="product-price-1151" data-price-amount="48" data-price-type="finalPrice" class="price-wrapper ">
+ <span class="price">$48.00</span>
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-item">
+                                        <div class="product-item-info" data-container="product-grid">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/daphne-full-zip-hoodie.html" class="product photo product-item-photo" tabindex="-1">
+                                                <img class="product-image-photo default_image" src="./Tops &amp; Blouses - Women - Fashion_files/wh06-purple_main.jpg" alt="Daphne Full-Zip Hoodie">
+                                                <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/1119/" href="javascript:void(0);">
+                                                    <span>
+ <em class="porto-icon-eye"></em>Quickview
+ </span>
+                                                </a>
+                                            </a>
+                                            <div class="product details product-item-details">
+                                                <strong class="product name product-item-name">
+ <a class="product-item-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/daphne-full-zip-hoodie.html">
+ Daphne Full-Zip Hoodie </a>
+ </strong>
+                                                <div class="product-reviews-summary short">
+                                                    <div class="rating-summary">
+                                                        <span class="label">
+ <span>Rating:</span>
+                                                        </span>
+                                                        <div class="rating-result" title="80%">
+                                                            <span style="width:80%">
+ <span>80%</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-actions">
+                                                        <a class="action view" href="http://www.newsmartwave.net/magento2/porto/demo4_en/daphne-full-zip-hoodie.html#reviews">2&nbsp;
+ <span>Reviews</span>
+ </a>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box price-final_price" data-role="priceBox" data-product-id="1119">
+                                                    <span class="price-container price-final_price tax weee">
+ <span id="product-price-1119" data-price-amount="59" data-price-type="finalPrice" class="price-wrapper ">
+ <span class="price">$59.00</span>
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-item">
+                                        <div class="product-item-info" data-container="product-grid">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/diva-gym-tee.html" class="product photo product-item-photo" tabindex="-1">
+                                                <img class="product-image-photo default_image" src="./Tops &amp; Blouses - Women - Fashion_files/ws11-yellow_main.jpg" alt="Diva Gym Tee">
+                                                <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/1545/" href="javascript:void(0);">
+                                                    <span>
+ <em class="porto-icon-eye"></em>Quickview
+ </span>
+                                                </a>
+                                            </a>
+                                            <div class="product details product-item-details">
+                                                <strong class="product name product-item-name">
+ <a class="product-item-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/diva-gym-tee.html">
+ Diva Gym Tee </a>
+ </strong>
+                                                <div class="product-reviews-summary short">
+                                                    <div class="rating-summary">
+                                                        <span class="label">
+ <span>Rating:</span>
+                                                        </span>
+                                                        <div class="rating-result" title="87%">
+                                                            <span style="width:87%">
+ <span>87%</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-actions">
+                                                        <a class="action view" href="http://www.newsmartwave.net/magento2/porto/demo4_en/diva-gym-tee.html#reviews">3&nbsp;
+ <span>Reviews</span>
+ </a>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box price-final_price" data-role="priceBox" data-product-id="1545">
+                                                    <span class="price-container price-final_price tax weee">
+ <span id="product-price-1545" data-price-amount="32" data-price-type="finalPrice" class="price-wrapper ">
+ <span class="price">$32.00</span>
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="owl-item" style="width: 319px; margin-right: 0px;">
+                                <div class="item">
+                                    <div class="product product-item">
+                                        <div class="product-item-info" data-container="product-grid">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/radiant-tee.html" class="product photo product-item-photo" tabindex="-1">
+                                                <img class="product-image-photo default_image" src="./Tops &amp; Blouses - Women - Fashion_files/ws12-orange_main.jpg" alt="Radiant Tee">
+                                                <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/1561/" href="javascript:void(0);">
+                                                    <span>
+ <em class="porto-icon-eye"></em>Quickview
+ </span>
+                                                </a>
+                                            </a>
+                                            <div class="product details product-item-details">
+                                                <strong class="product name product-item-name">
+ <a class="product-item-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/radiant-tee.html">
+ Radiant Tee </a>
+ </strong>
+                                                <div class="product-reviews-summary short">
+                                                    <div class="rating-summary">
+                                                        <span class="label">
+ <span>Rating:</span>
+                                                        </span>
+                                                        <div class="rating-result" title="60%">
+                                                            <span style="width:60%">
+ <span>60%</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="reviews-actions">
+                                                        <a class="action view" href="http://www.newsmartwave.net/magento2/porto/demo4_en/radiant-tee.html#reviews">3&nbsp;
+ <span>Reviews</span>
+ </a>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box price-final_price" data-role="priceBox" data-product-id="1561">
+                                                    <span class="price-container price-final_price tax weee">
+ <span id="product-price-1561" data-price-amount="22" data-price-type="finalPrice" class="price-wrapper ">
+ <span class="price">$22.00</span>
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product product-item">
+                                        <div class="product-item-info" data-container="product-grid">
+                                            <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/ariel-roll-sleeve-sweatshirt.html" class="product photo product-item-photo" tabindex="-1">
+                                                <img class="product-image-photo default_image" src="./Tops &amp; Blouses - Women - Fashion_files/wh09-purple_main.jpg" alt="Ariel Roll Sleeve Sweatshirt">
+                                                <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/1167/" href="javascript:void(0);">
+                                                    <span>
+ <em class="porto-icon-eye"></em>Quickview
+ </span>
+                                                </a>
+                                            </a>
+                                            <div class="product details product-item-details">
+                                                <strong class="product name product-item-name">
+ <a class="product-item-link" href="http://www.newsmartwave.net/magento2/porto/demo4_en/ariel-roll-sleeve-sweatshirt.html">
+ Ariel Roll Sleeve Sweatshirt </a>
+ </strong>
+                                                <div class="product-reviews-summary short">
+                                                    <div class="rating-summary">
+                                                        <span class="label">
+ <span>Rating:</span>
+                                                        </span>
+                                                        <div class="rating-result" title="0%">
+                                                            <span style="width:0">
+ <span>0%</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="price-box price-final_price" data-role="priceBox" data-product-id="1167">
+                                                    <span class="price-container price-final_price tax weee">
+ <span id="product-price-1167" data-price-amount="39" data-price-type="finalPrice" class="price-wrapper ">
+ <span class="price">$39.00</span>
+                                                    </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls">
+                        <div class="owl-nav">
+                            <div class="owl-prev" style="">
+                                <em class="porto-icon-left-open-huge"></em>
+                            </div>
+                            <div class="owl-next" style="">
+                                <em class="porto-icon-right-open-huge"></em>
+                            </div>
+                        </div>
+                        <div class="owl-dots" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            require([
+                'jquery',
+                'owl.carousel/owl.carousel.min'
+            ], function($) {
+                $("#featured_product .owl-carousel").owlCarousel({
+                    loop: false,
+                    items: 1,
+                    nav: true,
+                    navText: [" < em class = 'porto-icon-left-open-huge' > < /em>", " < em class = 'porto-icon-right-open-huge' > < /em>"],
+                    dots: false
+                });
+            });
+        </script>
+    </div>
+    <h2 style="font-weight:600;font-size:16px;color:#000;line-height:1;margin-bottom:15px;">Custom HTML Block</h2>
+    <h5 style="font-family:Arial;font-weight:400;font-size:11px;color:#878787;line-height:1;margin-bottom:13px;">This is a custom sub-title.</h5>
+    <p style="font-weight:400;font-size:14px;color:#666;line-height:1.42;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus </p>
+    <div class="space" style="margin-bottom: 45px;"></div>
+</div>
