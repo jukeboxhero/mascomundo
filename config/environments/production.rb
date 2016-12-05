@@ -75,6 +75,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.consider_all_requests_local = true
+  config.serve_static_assets = true
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
