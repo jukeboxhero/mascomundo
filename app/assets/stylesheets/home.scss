@@ -46,3 +46,15 @@ header:not(.sticky-header) {
 .porto-icon-search {
   border: none;
 }
+
+#half-image-1 {
+  background: image-url('/assets/dogs.jpg') left center / cover no-repeat;
+  min-height: 752px;
+  width: 100%;
+}
+
+#half-image-2 {
+  background: image-url('/assets/cats.jpg') right center / cover no-repeat;
+  min-height: 705px;
+  width: 100%;
+}
