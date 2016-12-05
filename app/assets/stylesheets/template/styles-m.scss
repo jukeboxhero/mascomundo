@@ -3522,8 +3522,8 @@ fieldset[disabled] .hasDatepicker + .ui-datepicker-trigger {
 }
 @font-face {
     font-family: 'porto-icons';
-    src: asset-url('/assets/porto-icons.eot');
-    src: asset-url('/assets/porto-icons.eot?#iefix') format('embedded-opentype'), asset-url('/assets/porto-icons.woff2') format('woff2'), asset-url('/assets/porto-icons.woff') format('woff'), asset-url('/assets/porto-icons.ttf') format('truetype'), asset-url('/assets/porto-icons.svg#porto-icons') format('svg');
+    src: asset-url('porto-icons.eot');
+    src: asset-url('porto-icons.eot?#iefix') format('embedded-opentype'), asset-url('porto-icons.woff2') format('woff2'), asset-url('porto-icons.woff') format('woff'), asset-url('porto-icons.ttf') format('truetype'), asset-url('porto-icons.svg#porto-icons') format('svg');
     font-weight: normal;
     font-style: normal
 }
