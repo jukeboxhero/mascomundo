@@ -446,7 +446,7 @@
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: 600;
-  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(httpws://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxtDawAUxQv-nqIa2sHgh1E4.woff2) format('woff2');
+  src: local('Open Sans Semibold Italic'), local('OpenSans-SemiboldItalic'), url(https://fonts.gstatic.com/s/opensans/v13/PRmiXeptR36kaC0GEAetxtDawAUxQv-nqIa2sHgh1E4.woff2) format('woff2');
   unicode-range: U+0370-03FF;
 }
 /* vietnamese */

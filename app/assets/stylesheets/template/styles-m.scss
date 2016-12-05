@@ -2616,29 +2616,29 @@ fieldset[disabled] .form.send.friend .action.remove {
 }
 @font-face {
     font-family: 'Open Sans';
-    src: url('../fonts/opensans/light/opensans-300.eot');
-    src: url('../fonts/opensans/light/opensans-300.eot?#iefix') format('embedded-opentype'), url('../fonts/opensans/light/opensans-300.woff2') format('woff2'), url('../fonts/opensans/light/opensans-300.woff') format('woff'), url('../fonts/opensans/light/opensans-300.ttf') format('truetype'), url('../fonts/opensans/light/opensans-300.svg#Open Sans') format('svg');
+    src: asset-url('../fonts/opensans/light/opensans-300.eot');
+    src: asset-url('../fonts/opensans/light/opensans-300.eot?#iefix') format('embedded-opentype'), asset-url('../fonts/opensans/light/opensans-300.woff2') format('woff2'), asset-url('../fonts/opensans/light/opensans-300.woff') format('woff'), asset-url('../fonts/opensans/light/opensans-300.ttf') format('truetype'), asset-url('../fonts/opensans/light/opensans-300.svg#Open Sans') format('svg');
     font-weight: 300;
     font-style: normal
 }
 @font-face {
     font-family: 'Open Sans';
-    src: url('/assets/regular/opensans-400.eot');
-    src: url('/assets/regular/opensans-400.eot?#iefix') format('embedded-opentype'), url('/assets/regular/opensans-400.woff2') format('woff2'), url('/assets/regular/opensans-400.woff') format('woff'), url('/assets/regular/opensans-400.ttf') format('truetype'), url('/assets/regular/opensans-400.svg#Open Sans') format('svg');
+    src: asset-url('/assets/regular/opensans-400.eot');
+    src: asset-url('/assets/regular/opensans-400.eot?#iefix') format('embedded-opentype'), asset-url('/assets/regular/opensans-400.woff2') format('woff2'), asset-url('/assets/regular/opensans-400.woff') format('woff'), asset-url('/assets/regular/opensans-400.ttf') format('truetype'), asset-url('/assets/regular/opensans-400.svg#Open Sans') format('svg');
     font-weight: 400;
     font-style: normal
 }
 @font-face {
     font-family: 'Open Sans';
-    src: url('/assets/semibold/opensans-600.eot');
-    src: url('/assets/semibold/opensans-600.eot?#iefix') format('embedded-opentype'), url('/assets/semibold/opensans-600.woff2') format('woff2'), url('/assets/semibold/opensans-600.woff') format('woff'), url('/assets/semibold/opensans-600.ttf') format('truetype'), url('/assets/semibold/opensans-600.svg#Open Sans') format('svg');
+    src: asset-url('/assets/semibold/opensans-600.eot');
+    src: asset-url('/assets/semibold/opensans-600.eot?#iefix') format('embedded-opentype'), asset-url('/assets/semibold/opensans-600.woff2') format('woff2'), asset-url('/assets/semibold/opensans-600.woff') format('woff'), asset-url('/assets/semibold/opensans-600.ttf') format('truetype'), asset-url('/assets/semibold/opensans-600.svg#Open Sans') format('svg');
     font-weight: 600;
     font-style: normal
 }
 @font-face {
     font-family: 'Open Sans';
-    src: url('../fonts/opensans/bold/opensans-700.eot');
-    src: url('../fonts/opensans/bold/opensans-700.eot?#iefix') format('embedded-opentype'), url('/assets/bold/opensans-700.woff2') format('woff2'), url('/assets/bold/opensans-700.woff') format('woff'), url('../fonts/opensans/bold/opensans-700.ttf') format('truetype'), url('../fonts/opensans/bold/opensans-700.svg#Open Sans') format('svg');
+    src: asset-url('../fonts/opensans/bold/opensans-700.eot');
+    src: asset-url('../fonts/opensans/bold/opensans-700.eot?#iefix') format('embedded-opentype'), asset-url('/assets/bold/opensans-700.woff2') format('woff2'), asset-url('/assets/bold/opensans-700.woff') format('woff'), asset-url('../fonts/opensans/bold/opensans-700.ttf') format('truetype'), asset-url('../fonts/opensans/bold/opensans-700.svg#Open Sans') format('svg');
     font-weight: 700;
     font-style: normal
 }
@@ -3522,8 +3522,8 @@ fieldset[disabled] .hasDatepicker + .ui-datepicker-trigger {
 }
 @font-face {
     font-family: 'porto-icons';
-    src: url('/assets/porto-icons.eot');
-    src: url('/assets/porto-icons.eot?#iefix') format('embedded-opentype'), url('/assets/porto-icons.woff2') format('woff2'), url('/assets/porto-icons.woff') format('woff'), url('/assets/porto-icons.ttf') format('truetype'), url('/assets/porto-icons.svg#porto-icons') format('svg');
+    src: asset-url('/assets/porto-icons.eot');
+    src: asset-url('/assets/porto-icons.eot?#iefix') format('embedded-opentype'), asset-url('/assets/porto-icons.woff2') format('woff2'), asset-url('/assets/porto-icons.woff') format('woff'), asset-url('/assets/porto-icons.ttf') format('truetype'), asset-url('/assets/porto-icons.svg#porto-icons') format('svg');
     font-weight: normal;
     font-style: normal
 }
