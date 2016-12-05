@@ -13,7 +13,7 @@ Spree::HomeController.class_eval do
     @featured_products = featured.products.active if featured
 
     latest = Spree::Taxon.where(:name => 'Latest').first
-    @latest_products = latest.products.active if latest
+    @latest_products = latest ? latest.products.active : []
   end
 
 end
