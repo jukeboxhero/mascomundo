@@ -14,6 +14,14 @@ $ ->
   $('.main .products.grid .product-items li.product-item:nth-child(8n)').addClass('nth-child-8n');
   $('.main .products.grid .product-items li.product-item:nth-child(8n+1)').addClass('nth-child-8np1');
 
+  $('.filter-options .items .item').on 'click', (e) ->
+    unless $(e.target).hasClass('property')
+      e.preventDefault()
+      checkBoxes = $(this).find("input.property[type='checkbox']");
+      checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+    if $(this).find("input.property[type='checkbox']").prop('checked')
+      $("#ln_overlay").show();
+
   $('.filter-options-title').click ->
     $(this).parent().toggleClass('active');
 
