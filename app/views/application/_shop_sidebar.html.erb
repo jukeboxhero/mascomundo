@@ -48,7 +48,7 @@
             <form id="property_form">
                 <% @properties.each do |property| %>
                     <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
-                        <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                        <div data-role="collapsible" class="filter-options-item active" role="presentation" data-collapsible="true">
                             <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><%= property.name %></div>
                             <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
                                 <% product_properties = @product_properties.where(property_id: property.id) %>

@@ -10,7 +10,7 @@ Spree::TaxonsController.class_eval do
 
       @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true, search: @filters))
       @products = @searcher.retrieve_products
-      @product_properties = Spree::ProductProperty.joins(:product).merge(@products).uniq
+      @product_properties = Spree::ProductProperty.joins(:product).merge(@taxon.products).uniq
       @properties = @product_properties.map { |x| x.property }.uniq
 
       @taxonomies = Spree::Taxonomy.includes(root: :children)
