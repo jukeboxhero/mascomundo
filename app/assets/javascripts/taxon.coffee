@@ -19,21 +19,26 @@ $ ->
       e.preventDefault()
       checkBoxes = $(this).find("input.property[type='checkbox']");
       checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-    if $(this).find("input.property[type='checkbox']").prop('checked')
-      activateFilter();
-    else
-      deactivateFilter();
+    activateFilter();
 
   $('.filter-options-title').click ->
     $(this).parent().toggleClass('active');
 
-  $('.page-products').find('.modes #mode-list').on 'click', (e) ->
+  $('.page-products').on 'click', '.modes #mode-list', (e) ->
     e.preventDefault();
     activateListMode();
 
-  $('.page-products').find('.modes #mode-grid').on 'click', (e) ->
+  $('.page-products').on 'click', '.modes #mode-grid', (e) ->
     e.preventDefault();
     activateGridMode();
+
+  $('.filter-current').on 'click', 'li.item .action.remove', (e) ->
+    e.preventDefault();
+
+  $('.filter-actions').on 'click', '.action.clear', (e) ->
+    e.preventDefault();
+    clearFilters();
+
 
   activateListMode = =>
     toggleListMode('list');
@@ -47,19 +52,26 @@ $ ->
     $.get url, ((data) ->
       $("#ln_overlay").hide();
       output = ''
-      $.each data, (key, value) ->
+      $.each data.filters, (key, value) ->
         output += "<li class='item'><span class='filter-label'>#{key}</span><span class='filter-value'>#{value.join(', ')}</span><a class='action remove' href='#' title='Remove Color Red'>
                             <span>Remove This Item</span>
                         </a></li>"
         return
+      # hide the current filter box if none are applied
+      if $.isEmptyObject data.filters
+        $('.applied-filters').hide()
+      else
+        $('.applied-filters').show()
+      $('#maincontent .column.main').html(data.html)
       $('.filter-current ol.items').html(output)
-      $('.applied-filters').show()
+      
       window.history.pushState({}, "", url);
       return
     ), 'json'
 
-  deactivateFilter = =>
-    $("#ln_overlay").hide();
+  clearFilters = =>
+    $('.filter-options .items .item input:checkbox').removeAttr('checked')
+    activateFilter()
 
   toggleListMode = (mode) ->
     $('.modes-mode').removeClass('active');

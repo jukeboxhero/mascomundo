@@ -4,19 +4,21 @@ Spree::TaxonsController.class_eval do
       @taxon = Spree::Taxon.friendly.find(params[:id])
       return unless @taxon
 
-      @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
+      filter_products
+
+      Rails.logger.debug(@filters.inspect)
+
+      @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true, search: @filters))
       @products = @searcher.retrieve_products
       @product_properties = Spree::ProductProperty.joins(:product).merge(@products).uniq
       @properties = @product_properties.map { |x| x.property }.uniq
-
-      filter_products
 
       @taxonomies = Spree::Taxonomy.includes(root: :children)
 
       respond_to do |format|
         format.html
         format.json {
-          render json: @filters 
+          render json: { filters: @filters, html: render_to_string(partial: 'shop_body.html.erb') }
         }
       end
     end

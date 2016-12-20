@@ -22,3 +22,7 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::LegacyUser"
+
+# use custom search class
+require "#{Rails.root}/lib/spree/custom_search"
+Spree::Config.searcher_class = Spree::CustomSearch
