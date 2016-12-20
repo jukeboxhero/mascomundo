@@ -551,34 +551,18 @@
                         Compare Products        (<span class="counter qty" data-bind="text: compareProducts().countCaption"></span>)
                         </a>
                     </li>
-                    <li class="authorization-link" data-label="or">
-                        <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/login/">
-                        Sign In    </a>
-                        <div class="block block-customer-login block-header-customer-login">
-                            <div class="block-content" aria-labelledby="block-customer-login-heading">
-                                <form class="form form-login" action="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/loginPost/" method="post" id="header-login-form" novalidate="novalidate">
-                                    <input name="form_key" type="hidden" value="chtq2Pnb4Wvgd7R9">            
-                                    <fieldset class="fieldset login" data-hasrequired="* Required Fields">
-                                        <div class="field email required">
-                                            <div class="control">
-                                                <input name="login[username]" value="" autocomplete="off" id="email" type="email" class="input-text" title="Email" data-validate="{required:true, &#39;validate-email&#39;:true}" placeholder="Email" aria-required="true">
-                                            </div>
-                                        </div>
-                                        <div class="field password required">
-                                            <div class="control">
-                                                <input name="login[password]" type="password" autocomplete="off" class="input-text" id="pass" title="Password" data-validate="{required:true}" placeholder="Password" aria-required="true">
-                                            </div>
-                                        </div>
-                                        <div class="actions-toolbar">
-                                            <div class="primary"><button type="submit" class="action login primary" name="send" id="send2"><span>Sign In</span></button></div>
-                                            <div class="secondary"><a class="action remind" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/forgotpassword/"><span>Forgot Your Password?</span></a></div>
-                                        </div>
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/create/">Create an Account</a></li>
+                    <% if current_spree_user %>
+                        <li class="authorization-link" data-label="or">
+                            <%= link_to current_spree_user.email, '' %>
+                        </li>
+                    <% else %>
+                        <li class="authorization-link" data-label="or">
+                            <%= link_to "Sign In", login_path %>
+                        </li>
+                        <li>
+                            <%= link_to "Create an Account", signup_path %>
+                        </li>
+                    <% end %>
                 </ul>
                 <div class="search-area">
                     <a href="javascript:void(0)" class="search-toggle-icon"><i class="porto-icon-search"></i></a>

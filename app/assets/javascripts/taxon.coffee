@@ -20,7 +20,9 @@ $ ->
       checkBoxes = $(this).find("input.property[type='checkbox']");
       checkBoxes.prop("checked", !checkBoxes.prop("checked"));
     if $(this).find("input.property[type='checkbox']").prop('checked')
-      $("#ln_overlay").show();
+      activateFilter();
+    else
+      deactivateFilter();
 
   $('.filter-options-title').click ->
     $(this).parent().toggleClass('active');
@@ -38,6 +40,26 @@ $ ->
 
   activateGridMode = =>
     toggleListMode('grid');
+
+  activateFilter = =>
+    $("#ln_overlay").show();
+    url = window.location.href.split('?')[0] + '?' + $("#property_form").serialize();
+    $.get url, ((data) ->
+      $("#ln_overlay").hide();
+      output = ''
+      $.each data, (key, value) ->
+        output += "<li class='item'><span class='filter-label'>#{key}</span><span class='filter-value'>#{value.join(', ')}</span><a class='action remove' href='#' title='Remove Color Red'>
+                            <span>Remove This Item</span>
+                        </a></li>"
+        return
+      $('.filter-current ol.items').html(output)
+      $('.applied-filters').show()
+      window.history.pushState({}, "", url);
+      return
+    ), 'json'
+
+  deactivateFilter = =>
+    $("#ln_overlay").hide();
 
   toggleListMode = (mode) ->
     $('.modes-mode').removeClass('active');

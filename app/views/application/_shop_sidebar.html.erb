@@ -20,51 +20,59 @@
             <strong data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">Filter</strong>
         </div>
         <div class="block-content filter-content">
-            <div class="filter-current" data-collapsible="true" role="tablist">
-                <strong class="block-subtitle filter-current-subtitle" role="tab" aria-level="2" data-role="title" data-count="1" aria-selected="false" aria-expanded="false" tabindex="0">Now Shopping by</strong>
-                <ol class="items">
-                    <li class="item">
-                        <span class="filter-label">Color</span>
-                        <span class="filter-value">Red</span>
-                        <a class="action remove" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" title="Remove Color Red">
-                            <span>Remove This Item</span>
-                        </a>
-                    </li>
-                </ol>
-            </div>
-            <div class="block-actions filter-actions">
-                <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" class="action clear filter-clear">
-                    <span>Clear All</span>
-                </a>
+            <div class="applied-filters" style="<%= 'display: none' unless @filters %>">
+                <div class="filter-current" data-collapsible="true" role="tablist">
+                    <strong class="block-subtitle filter-current-subtitle" role="tab" aria-level="2" data-role="title" data-count="1" aria-selected="false" aria-expanded="false" tabindex="0">Now Shopping by</strong>
+                    <ol class="items">
+                        <% if @filters %>
+                            <% @filters.each do |name, values| %>
+                                <li class="item">
+                                    <span class="filter-label"><%= name %></span>
+                                    <span class="filter-value"><%= values.join(', ') %></span>
+                                    <a class="action remove" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" title="Remove Color Red">
+                                        <span>Remove This Item</span>
+                                    </a>
+                                </li>
+                            <% end %>
+                        <% end %>
+                    </ol>
+                </div>
+                <div class="block-actions filter-actions">
+                    <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" class="action clear filter-clear">
+                        <span>Clear All</span>
+                    </a>
+                </div>
             </div>
             <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle">Shopping Options</strong>
 
-            <% @properties.each do |property| %>
-                <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
-                    <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
-                        <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><%= property.name %></div>
-                        <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
-                            <% product_properties = @product_properties.where(property_id: property.id) %>
-                            <% unless product_properties.blank? %>
-                                <ol class="items">
-                                    <% values = product_properties.to_a.uniq { |item| item.value }%>
-                                    <% values.each do |product_property| %>
-                                        <li class="item">
-                                            <a href="#">
-                                                <input type="checkbox" class="property"> <%= product_property.value %>
-                                                <span class="count"><%= product_properties.select { |a| a.value == product_property.value }.count %>
-             <span class="filter-count-label">
-             item</span>
-                                                </span>
-                                            </a>
-                                        </li>
-                                    <% end %>
-                                </ol>
-                            <% end %>
+            <form id="property_form">
+                <% @properties.each do |property| %>
+                    <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
+                        <div data-role="collapsible" class="filter-options-item" role="presentation" data-collapsible="true">
+                            <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><%= property.name %></div>
+                            <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
+                                <% product_properties = @product_properties.where(property_id: property.id) %>
+                                <% unless product_properties.blank? %>
+                                    <ol class="items">
+                                        <% values = product_properties.to_a.uniq { |item| item.value }%>
+                                        <% values.each do |product_property| %>
+                                            <li class="item">
+                                                <a href="#">
+                                                    <input type="checkbox" class="property" name="filters[<%= property.name %>][<%=product_property.value %>]"> <%= product_property.value %>
+                                                    <span class="count"><%= product_properties.select { |a| a.value == product_property.value }.count %>
+                 <span class="filter-count-label">
+                 item</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        <% end %>
+                                    </ol>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <% end %>
+                <% end %>
+            </form>
 
             <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
                 

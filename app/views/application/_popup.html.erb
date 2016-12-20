@@ -1,0 +1,23 @@
+<div class="newsletter" id="newsletter_popup" style="">
+    <div class="block-content">
+        <%= image_tag("logo_1.png") %>
+        <h2>BE THE FIRST TO KNOW</h2>
+        <p>Subscribe to the Porto eCommerce newsletter to receive timely updates from your favorite products.</p>
+        <form class="form subscribe" novalidate="novalidate" action="http://www.newsmartwave.net/magento2/porto/demo4_en/newsletter/subscriber/new/" method="post" id="newsletter-validate-detail">
+            <div class="field newsletter">
+                <div class="control">
+                    <input name="email" type="email" id="footer_newsletter" data-validate="{required:true, &#39;validate-email&#39;:true}">
+                </div>
+            </div>
+            <div class="actions">
+                <button class="action subscribe primary" title="Go" type="submit">
+                <span>Go</span>
+                </button>
+            </div>
+        </form>
+        <div class="subscribe-bottom">
+            <input type="checkbox" id="newsletter_popup_dont_show_again">
+            <label for="newsletter_popup_dont_show_again">Don't show this popup again</label>
+        </div>
+    </div>
+</div>

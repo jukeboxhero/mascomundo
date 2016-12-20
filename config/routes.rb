@@ -63,5 +63,7 @@ Rails.application.routes.draw do
 
   resources :products
 
+  resource :about, only: [:show], controller: :about, as: :about
+
   root 'home#index'
 end
