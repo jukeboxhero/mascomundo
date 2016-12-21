@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 #newsletter_popup {
   height:324px;  
   width:700px;
@@ -43,8 +45,44 @@ header:not(.sticky-header) {
   }
 }
 
+.sw-megamenu.navigation span.cat-label.cat-label-label1 {
+    background-color: $primary_color;
+}
+
+.sw-megamenu.navigation li.level0 > a > span.cat-label.cat-label-label1:before {
+  border-top-color: $primary_color;
+}
+
+.page-header.type4 .navigation .level0:hover > .level-top {
+  color: #fff;
+  background-color: $secondary_color;
+  border-radius: 5px;
+}
+
 .porto-icon-search {
   border: none;
+}
+
+.callout {
+  height: 257px;
+  position: relative;
+
+  .image-link {
+    height: 100%;
+    position: relative;
+  }
+}
+
+.callout2 {
+  background: linear-gradient(#c61136, #8f183f);
+}
+
+.callout3 {
+  background: #ffffff;
+}
+
+.callout4 {
+  background: linear-gradient(#a2d5aa, #42ada8);
 }
 
 #half-image-1 {
@@ -57,4 +95,8 @@ header:not(.sticky-header) {
   background: image-url('cats.jpg') right center / cover no-repeat;
   min-height: 705px;
   width: 100%;
+}
+
+#newsletter_popup {
+  border-top: 4px solid $secondary_color;
 }

@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'MontserratAlternates-Black';
+  font-style: normal;
+  font-weight: 300;
+  src: font-url('MontserratAlternates-Black.otf'), format('opentype');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: font-url('ProximaNova-Regular.eot?') format('eot'),
+       font-url('ProximaNova-Regular.otf')  format('opentype'),
+       font-url('ProximaNova-Regular.woff') format('woff'),
+       font-url('ProximaNova-Regular.ttf')  format('truetype'),
+       font-url('ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProximaNova-Bold';
+  src: font-url('ProximaNova-Bold.eot?') format('eot'),
+       font-url('ProximaNova-Bold.otf')  format('opentype'),
+       font-url('ProximaNova-Bold.woff') format('woff'),
+       font-url('ProximaNova-Bold.ttf')  format('truetype'),
+       font-url('ProximaNova-Bold.svg#ProximaNova-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$primary_color: #a2d5aa;
+$secondary_color: #42ada8;

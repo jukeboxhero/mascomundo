@@ -92,5 +92,104 @@
 
     <%= yield %>
 
+    <%= render partial: 'footer' %>
+
+<script>
+    window.weltpixel_quickview = {"baseUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/","closeSeconds":"5","showMiniCart":"1","showShoppingCheckoutButtons":"1"};
+</script>
+
+<div class="modals-wrapper">
+
+    <aside class="modal-popup popup-authentication
+        modal-slide
+        _inner-scroll" data-role="modal" data-type="popup" tabindex="0">
+        <div data-role="focusable-start" tabindex="0"></div>
+        <div class="modal-inner-wrap" data-role="focusable-scope">
+            <header class="modal-header">
+                <button class="action-close" data-role="closeBtn" type="button">
+                <span>Close</span>
+                </button>
+            </header>
+            <div class="modal-content" data-role="content">
+                <div class="block-authentication" data-bind="afterRender: setModalElement, blockLoader: isLoading" style="">
+                    <div class="block block-new-customer" data-bind="attr: {&#39;data-label&#39;: $t(&#39;or&#39;)}" data-label="or">
+                        <div class="block-title">
+                            <strong id="block-new-customer-heading" role="heading" aria-level="2" data-bind="i18n: &#39;Checkout out as a new customer&#39;">Checkout out as a new customer</strong>
+                        </div>
+                        <div class="block-content" aria-labelledby="block-new-customer-heading">
+                            <p data-bind="i18n: &#39;Creating an account has many benefits:&#39;">Creating an account has many benefits:</p>
+                            <ul>
+                                <li data-bind="i18n: &#39;See order and shipping status&#39;">See order and shipping status</li>
+                                <li data-bind="i18n: &#39;Track order history&#39;">Track order history</li>
+                                <li data-bind="i18n: &#39;Check out faster&#39;">Check out faster</li>
+                            </ul>
+                            <div class="actions-toolbar">
+                                <div class="primary">
+                                    <a class="action action-register primary" data-bind="attr: {href: registerUrl}" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/create/">
+                                    <span data-bind="i18n: &#39;Create an Account&#39;">Create an Account</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block block-customer-login" data-bind="attr: {&#39;data-label&#39;: $t(&#39;or&#39;)}" data-label="or">
+                        <div class="block-title">
+                            <strong id="block-customer-login-heading" role="heading" aria-level="2" data-bind="i18n: &#39;Checkout out using your account&#39;">Checkout out using your account</strong>
+                        </div>
+                        <!-- ko foreach: getRegion('messages') -->
+                        <!-- ko template: getTemplate() -->
+                        <div data-role="checkout-messages" class="messages" data-bind="visible: isVisible(), click: removeAll">
+                            <!-- ko foreach: messageContainer.getErrorMessages() --><!--/ko-->
+                            <!-- ko foreach: messageContainer.getSuccessMessages() --><!--/ko-->
+                        </div>
+                        <!-- /ko -->
+                        <!--/ko-->
+                        <!-- ko foreach: getRegion('before') --><!-- /ko -->
+                        <div class="block-content" aria-labelledby="block-customer-login-heading">
+                            <form class="form form-login" method="post" data-bind="submit:login" id="login-form">
+                                <div class="fieldset login" data-bind="attr: {&#39;data-hasrequired&#39;: $t(&#39;* Required Fields&#39;)}" data-hasrequired="* Required Fields">
+                                    <div class="field email required">
+                                        <label class="label" for="email"><span data-bind="i18n: &#39;Email Address&#39;">Email Address</span></label>
+                                        <div class="control">
+                                            <input name="username" id="email" type="email" class="input-text" data-bind="attr: {autocomplete: autocomplete}" data-validate="{required:true, &#39;validate-email&#39;:true}" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="field password required">
+                                        <label for="pass" class="label"><span data-bind="i18n: &#39;Password&#39;">Password</span></label>
+                                        <div class="control">
+                                            <input name="password" type="password" class="input-text" id="pass" data-bind="attr: {autocomplete: autocomplete}" data-validate="{required:true}" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                                    <!-- ko template: getTemplate() -->
+                                    <!-- ko if: (isRequired() && getIsVisible())--><!-- /ko -->
+                                    <!-- /ko -->
+                                    <!-- /ko -->
+                                </div>
+                                <div class="actions-toolbar">
+                                    <input name="context" type="hidden" value="checkout">
+                                    <div class="primary">
+                                        <button type="submit" class="action action-login secondary" name="send" id="send2">
+                                        <span data-bind="i18n: &#39;Sign In&#39;">Sign In</span>
+                                        </button>
+                                    </div>
+                                    <div class="secondary">
+                                        <a class="action" data-bind="attr: {href: forgotPasswordUrl}" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/forgotpassword/">
+                                        <span data-bind="i18n: &#39;Forgot Your Password?&#39;">Forgot Your Password?</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="focusable-end" tabindex="0"></div>
+    </aside>
+</div>
+
+<%= render partial: 'popup' %>
+
   </body>
 </html>

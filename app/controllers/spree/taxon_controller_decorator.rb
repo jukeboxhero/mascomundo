@@ -6,8 +6,6 @@ Spree::TaxonsController.class_eval do
 
       filter_products
 
-      Rails.logger.debug(@filters.inspect)
-
       @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true, search: @filters))
       @products = @searcher.retrieve_products
       @product_properties = Spree::ProductProperty.joins(:product).merge(@taxon.products).uniq
