@@ -57,8 +57,8 @@
                                         <%= link_to "About us", main_app.about_path %>
                                     </li>
                                     <li><em class="porto-icon-right-dir theme-color"></em><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/contact" title="Contact us">Contact us</a></li>
-                                    <li><em class="porto-icon-right-dir theme-color"></em><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account" title="My account">My account</a></li>
-                                    <li><em class="porto-icon-right-dir theme-color"></em><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/sales/order/history" title="Orders history">Orders history</a></li>
+                                    <li><em class="porto-icon-right-dir theme-color"></em><%= link_to "My account", account_path, title: "My account" %></li>
+                                    <li><em class="porto-icon-right-dir theme-color"></em><%= link_to "Orders history", account_orders_path, title: "Orders history" %></li>
                                     <li><em class="porto-icon-right-dir theme-color"></em><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/catalogsearch/advanced" title="Advanced search">Advanced search</a></li>
                                 </ul>
                             </div>

@@ -90,7 +90,12 @@
         &lt;/div&gt;
     </noscript>
 
-    <%= yield %>
+    <div class="page-wrapper">
+        <%= render partial: "header" if @navbar %>
+        <%= render partial: "breadcrumbs" if @breadcrumbs %>
+
+        <%= yield %>
+    </div>
 
     <%= render partial: 'footer' %>
 

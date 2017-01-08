@@ -553,7 +553,7 @@
                     </li>
                     <% if current_spree_user %>
                         <li class="authorization-link" data-label="or">
-                            <%= link_to current_spree_user.email, '' %>
+                            <%= link_to current_spree_user.email, account_path %>
                         </li>
                         <li>
                             <%= link_to 'log out', logout_path %>

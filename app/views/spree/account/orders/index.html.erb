@@ -1,0 +1,66 @@
+<% @body_class = 'account customer-account-index page-layout-2columns-left layout-fullwidth wide' %>
+
+<div class="page-wrapper">
+   <main id="maincontent" class="page-main">
+      <a id="contentarea" tabindex="-1"></a>
+      <div class="page-title-wrapper">
+         <h1 class="page-title">
+            <span class="base" data-ui-id="page-title-wrapper">My Dashboard</span>    
+         </h1>
+      </div>
+      <div class="page messages">
+         <div data-placeholder="messages"></div>
+         <div data-bind="scope: &#39;messages&#39;">
+            <div data-bind="foreach: { data: cookieMessages, as: &#39;message&#39; }" class="messages">
+               <div data-bind="attr: {
+                  class: &#39;message-&#39; + message.type + &#39; &#39; + message.type + &#39; message&#39;,
+                  &#39;data-ui-id&#39;: &#39;message-&#39; + message.type
+                  }" class="message-success success message" data-ui-id="message-success">
+                  <div data-bind="html: message.text">Thank you for registering with MascoMundo.</div>
+               </div>
+            </div>
+            <div data-bind="foreach: { data: messages().messages, as: &#39;message&#39; }" class="messages"></div>
+         </div>
+      </div>
+      <div class="columns">
+         <div class="column main">
+            <div data-hook="account_my_orders" class="account-my-orders">
+
+              <h3><%= Spree.t(:my_orders) %></h3>
+              <% if @orders.present? %>
+                <table class="table table-striped order-summary">
+                  <thead class="active">
+                  <tr>
+                    <th class="order-number"><%= Spree::Order.human_attribute_name(:number) %></th>
+                    <th class="order-date"><%= Spree.t(:date) %></th>
+                    <th class="order-status"><%= Spree.t(:status) %></th>
+                    <th class="order-payment-state"><%= Spree.t(:payment_state) %></th>
+                    <th class="order-shipment-state"><%= Spree.t(:shipment_state) %></th>
+                    <th class="order-total"><%= Spree.t(:total) %></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @orders.each do |order| %>
+                    <tr>
+                      <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+                      <td class="order-date"><%= l order.completed_at.to_date %></td>
+                      <td class="order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
+                      <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+                      <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+                      <td class="lead text-primary order-total"><%= order.display_total %></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              <% else %>
+                <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
+              <% end %>
+              <br />
+
+            </div>
+         </div>
+         <%= render partial: 'spree/account/account_sidebar_nav' %>
+      </div>
+   </main>
+</div>
+      

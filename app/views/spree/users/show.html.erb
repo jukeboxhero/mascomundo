@@ -1,0 +1,114 @@
+<% @body_class = 'account customer-account-index page-layout-2columns-left layout-fullwidth wide' %>
+
+<div class="page-wrapper">
+   <main id="maincontent" class="page-main">
+      <a id="contentarea" tabindex="-1"></a>
+      <div class="page-title-wrapper">
+         <h1 class="page-title">
+            <span class="base" data-ui-id="page-title-wrapper">My Dashboard</span>    
+         </h1>
+      </div>
+      <div class="page messages">
+         <div data-placeholder="messages"></div>
+         <div data-bind="scope: &#39;messages&#39;">
+            <div data-bind="foreach: { data: cookieMessages, as: &#39;message&#39; }" class="messages">
+               <div data-bind="attr: {
+                  class: &#39;message-&#39; + message.type + &#39; &#39; + message.type + &#39; message&#39;,
+                  &#39;data-ui-id&#39;: &#39;message-&#39; + message.type
+                  }" class="message-success success message" data-ui-id="message-success">
+                  <div data-bind="html: message.text">Thank you for registering with MascoMundo.</div>
+               </div>
+            </div>
+            <div data-bind="foreach: { data: messages().messages, as: &#39;message&#39; }" class="messages"></div>
+         </div>
+      </div>
+      <div class="columns">
+         <div class="column main">
+            <input name="form_key" type="hidden" value="2vbqG0JIWt96H7gw">
+            <div id="authenticationPopup" data-bind="scope:&#39;authenticationPopup&#39;" style="display: none;">
+               <script>
+                  window.authenticationPopup = {"customerRegisterUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/customer\/account\/create\/","customerForgotPasswordUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/customer\/account\/forgotpassword\/","baseUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/"};
+               </script>
+               <!-- ko template: getTemplate() -->
+               <!-- /ko -->
+            </div>
+            <div class="block block-dashboard-info">
+               <div class="block-title"><strong>Account Information</strong></div>
+               <div class="block-content">
+                  <div class="box box-information">
+                     <strong class="box-title">
+                     <span>Contact Information</span>
+                     </strong>
+                     <div class="box-content">
+                        <p>
+                           <%= @user.name %><br>
+                           <%= @user.email %><br>
+                        </p>
+                     </div>
+                     <div class="box-actions">
+                        <%= link_to spree.edit_account_path, class: "action edit" do %>
+                          <span><%= Spree.t(:edit) %></span>
+                        <% end %>
+                        <a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/edit/changepass/1/" class="action change-password">
+                        Change Password                </a>
+                     </div>
+                  </div>
+                  <div class="box box-newsletter">
+                     <strong class="box-title">
+                     <span>Newsletters</span>
+                     </strong>
+                     <div class="box-content">
+                        <p>
+                           You don't subscribe to our newsletter.                                            
+                        </p>
+                     </div>
+                     <div class="box-actions">
+                        <a class="action edit" href="http://www.newsmartwave.net/magento2/porto/demo4_en/newsletter/manage/"><span>Edit</span></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="block block-dashboard-addresses">
+               <div class="block-title">
+                  <strong>Address Book</strong>
+                  <a class="action edit" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/address/"><span>Manage Addresses</span></a>
+               </div>
+               <div class="block-content">
+                  <div class="box box-billing-address">
+                     <strong class="box-title">
+                     <span>Default Billing Address</span>
+                     </strong>
+                     <div class="box-content">
+                        <address>
+                           You have not set a default billing address.                
+                        </address>
+                     </div>
+                     <div class="box-actions">
+                        <a class="action edit" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/address/edit/" data-ui-id="default-billing-edit-link"><span>Edit Address</span></a>
+                     </div>
+                  </div>
+                  <div class="box box-shipping-address">
+                     <strong class="box-title">
+                     <span>Default Shipping Address</span>
+                     </strong>
+                     <div class="box-content">
+                        <address>
+                           You have not set a default shipping address.                
+                        </address>
+                     </div>
+                     <div class="box-actions">
+                        <a class="action edit" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/address/edit/" data-ui-id="default-shipping-edit-link"><span>Edit Address</span></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <%= render partial: 'spree/account/account_sidebar_nav' %>
+      </div>
+   </main>
+</div>
+      
+      
+
+
+

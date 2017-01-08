@@ -1,4 +1,5 @@
 Spree::HomeController.class_eval do
+  layout 'home'
 
   def index
     @searcher = build_searcher(params.merge(include_images: true))

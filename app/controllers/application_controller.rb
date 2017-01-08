@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :fetch_categories
+  before_action :set_default_layout_variables
+
+  def set_default_layout_variables
+    @navbar = true
+    @breadcrumbs = true
+  end
 
   def fetch_categories
     taxon = Spree::Taxon.where(parent_id: nil, permalink: "categories").first

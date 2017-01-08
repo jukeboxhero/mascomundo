@@ -1,18 +1,15 @@
 <% @body_class = "page-with-filter page-products categorypath-fashion-women-tops-blouses category-tops-blouses catalog-category-view page-layout-2columns-left layout-fullwidth wide" %>
 
-<div class="page-wrapper">
-    <%= render partial: "header" %>
-    <%= render partial: "breadcrumbs" %>
+
     
-    <main id="maincontent" class="page-main">
-        <a id="contentarea" tabindex="-1"></a>
+<main id="maincontent" class="page-main">
+    <a id="contentarea" tabindex="-1"></a>
 
-        <div class="columns">
-            <div class="column main">
-                <%= render partial: "shop_body" %>
-            </div>
-            <%= render partial: "shop_sidebar" %>
+    <div class="columns">
+        <div class="column main">
+            <%= render partial: "shop_body" %>
         </div>
-    </main>
+        <%= render partial: "shop_sidebar" %>
+    </div>
+</main>
 
-</div>

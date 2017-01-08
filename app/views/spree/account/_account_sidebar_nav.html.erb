@@ -1,0 +1,50 @@
+<div class="sidebar sidebar-main">
+   <div class="block account-nav">
+      <div class="title">
+         <strong><%= accurate_title %></strong>
+      </div>
+      <div class="content">
+         <nav class="account-nav">
+            <ul class="nav items">
+               <li class="nav item current"><strong>Account Dashboard</strong></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/edit/">Account Information</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/address/">Address Book</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/downloadable/customer/products/">My Downloadable Products</a></li>
+               <li class="nav item"><%= link_to "My Orders", account_orders_path, title: "Orders history" %></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/newsletter/manage/">Newsletter Subscriptions</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/vault/cards/listaction/">My Credit Cards</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/paypal/billing_agreement/">Billing Agreements</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/review/customer/">My Product Reviews</a></li>
+               <li class="nav item"><a href="http://www.newsmartwave.net/magento2/porto/demo4_en/wishlist/">My Wish List</a></li>
+            </ul>
+         </nav>
+      </div>
+   </div>
+</div>
+
+<div class="sidebar sidebar-additional">
+   <div class="block block-reorder" data-bind="scope: &#39;lastOrderedItems&#39;">
+      <div class="block-title no-display" data-bind="css: {&#39;no-display&#39;: !lastOrderedItems().items || lastOrderedItems().items.length === 0}">
+         <strong id="block-reorder-heading" role="heading" aria-level="2">Recently Ordered</strong>
+      </div>
+      <div class="block-content no-display" data-bind="css: {&#39;no-display&#39;: !lastOrderedItems().items || lastOrderedItems().items.length === 0}" aria-labelledby="block-reorder-heading">
+         <form method="post" class="form reorder" action="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/addgroup/" id="reorder-validate-detail" novalidate="novalidate">
+            <strong class="subtitle">Last Ordered Items</strong>
+            <ol id="cart-sidebar-reorder" class="product-items product-items-names" data-bind="foreach: lastOrderedItems().items"></ol>
+            <div id="cart-sidebar-reorder-advice-container"></div>
+            <div class="actions-toolbar">
+               <div class="primary no-display" data-bind="css: {&#39;no-display&#39;: !lastOrderedItems().isShowAddToCart}">
+                  <button type="submit" title="Add to Cart" class="action tocart primary">
+                  <span>Add to Cart</span>
+                  </button>
+               </div>
+               <div class="secondary">
+                  <a class="action view" href="http://www.newsmartwave.net/magento2/porto/demo4_en/customer/account/">
+                  <span>View All</span>
+                  </a>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
