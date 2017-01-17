@@ -11,11 +11,19 @@ Rails.application.routes.draw do
     namespace :account do
       resources :orders
     end
+
+    get 'products/:id/quickview', to: 'products#quickview', as: :quickview
+  end
+
+  Spree::Core::Engine.routes.prepend do
+    # Your new routes
   end
 
   resources :products
 
   resource :about, only: [:show], controller: :about, as: :about
+  resource :contact, only: [:show], controller: :contact, as: :contact
+  resource :advanced_search, only: [:show], controller: :advanced_search, as: :advanced_search
 
   root 'home#index'
 end

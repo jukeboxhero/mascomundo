@@ -622,8 +622,7 @@
                         <span class="text">My Cart</span>
                         <span class="counter qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false }, blockLoader: isLoading">
                             <span class="counter-number">
-                                <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
-                                <!-- ko ifnot: getCartParam('summary_count') -->0<!-- /ko -->
+                                <%= current_order.item_count %>
                             </span>
                             <span class="counter-label">
                                 <!-- ko i18n: 'items' --><span>items</span><!-- /ko -->

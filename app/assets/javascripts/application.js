@@ -22,4 +22,6 @@
 //= require owl.carousel.min
 //= require fotorama
 //= require fotorama-add-video-events
+//= require magnific-popup
+//= require bootstrap
 //= require_tree .

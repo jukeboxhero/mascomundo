@@ -127,6 +127,7 @@ GEM
       activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    magnific-popup-rails (1.1.0)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     mime-types (3.1)
@@ -328,12 +329,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
   fotoramajs
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  magnific-popup-rails (~> 1.1.0)
   mysql2
   pg
   rails (= 4.2.7.1)

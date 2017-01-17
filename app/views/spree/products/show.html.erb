@@ -114,31 +114,69 @@
                         </div>
                     </div>
                     <div class="product-add-form">
-                        <form action="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/add/uenc/aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2VuL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzIxMDIvcy9tZW4tcy10LXNoaXJ0LTEv/product/2102/" method="post" id="product_addtocart_form" novalidate="novalidate">
-                            <input type="hidden" name="product" value="2102">
-                            <input type="hidden" name="selected_configurable_option" value="">
-                            <input type="hidden" name="related_product" id="related-products-field" value="">
-                            <input name="form_key" type="hidden" value="EVARFiAGejj96omJ">                            
-                            <div class="box-tocart">
-                                <div class="fieldset">
-                                    <div class="field qty">
-                                        <label class="label" for="qty"><span>Qty</span></label>
-                                        <div class="control">
-                                            <input type="number" name="qty" id="qty" maxlength="12" value="1" title="Qty" class="input-text qty" data-validate="{&quot;required-number&quot;:true,&quot;validate-item-quantity&quot;:{&quot;minAllowed&quot;:1}}">
+                        <%= form_for :order, url: populate_orders_path do |f| %>
+                            <% if @product.variants_and_option_values(current_currency).any? %>
+                              <div id="product-variants" class="col-md-6">
+                                <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+                                <ul class="list-group">
+                                  <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+                                    <li>
+                                      <%= radio_button_tag "variant_id", variant.id, index == 0,
+                                          'data-price' => variant.price_in(current_currency).money, 
+                                          'data-in-stock' => variant.can_supply?
+                                      %>
+                                      <%= label_tag "variant_id_#{ variant.id }" do %>
+                                        <span class="variant-description">
+                                          <%= variant_options variant %>
+                                        </span>
+                                        <% if variant_price variant %>
+                                          <span class="price diff"><%= variant_price variant %></span>
+                                        <% end %>
+                                        <% unless variant.can_supply? %>
+                                          <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                                        <% end %>
+                                      <% end %>
+                                    </li>
+                                  <% end%>
+                                </ul>
+                              </div>
+                            <% else %>
+                              <%= hidden_field_tag "variant_id", @product.master.id %>
+                            <% end %>
+
+                            <% if @product.can_supply? %>
+                                <div class="box-tocart">
+                                    <div class="fieldset">
+                                        <div class="field qty">
+                                            <label class="label" for="qty"><span>Qty</span></label>
+                                            <div class="control">
+                                                <%= number_field_tag :quantity, 1, class: 'title form-control input-text qty', id: 'qty', min: 1 %>
+                                            </div>
+                                            <div class="qty-changer">
+                                                <a href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
+                                                <a href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
+                                            </div>
                                         </div>
-                                        <div class="qty-changer">
-                                            <a href="javascript:void(0)" class="qty-inc"><i class="porto-icon-up-dir"></i></a>
-                                            <a href="javascript:void(0)" class="qty-dec"><i class="porto-icon-down-dir"></i></a>
+                                        <div class="actions">
+                                            <%= button_tag class: 'btn btn-success action primary tocart', id: 'add-to-cart-button', type: :submit do %>
+                                              <%= Spree.t(:add_to_cart) %>
+                                            <% end %>
                                         </div>
-                                    </div>
-                                    <div class="actions">
-                                        <button type="submit" title="Add to Cart" class="action primary tocart" id="product-addtocart-button">
-                                        <span>Add to Cart</span>
-                                        </button>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            <% else %>
+                                <div class="box-tocart">
+                                    <div class="fieldset">
+                                        <p>This product is currently unavailable.</p>
+                                        <div class="actions">
+                                            <%= button_tag class: 'btn btn-success action primary tocart', id: 'add-to-cart-button', type: :submit, disabled: true do %>
+                                              <%= Spree.t(:add_to_cart) %>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        <% end %>
                     </div>
 
                     <%= render partial: "share_social" %>

@@ -45,6 +45,12 @@ $ ->
           return
 
       href = $('.header.links .authorization-link > a').attr('href')
+
+      $('.weltpixel-quickview').on 'click', ->
+        prodUrl = $(this).attr('data-quickview-url')
+        if prodUrl.length
+          displayContent prodUrl
+        return
     return
   return
 

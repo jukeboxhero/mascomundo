@@ -1,0 +1,215 @@
+<head>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+</head>
+
+<body data-container="body" class="<%= @body_class || 'cms-porto-home-4 cms-index-index page-layout-1column layout-fullwidth wide' %>">
+
+    <div class="page-wrapper">
+
+<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
+<div class="page messages"><div data-placeholder="messages"></div><div data-bind="scope: 'messages'">
+    <div data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages"></div>
+    <div data-bind="foreach: { data: messages().messages, as: 'message' }" class="messages"></div>
+    <div class="message-success success message hide">
+        <div>You added <%= @product.name %> to your shopping cart.</div>
+    </div>
+</div>
+
+</div><div class="columns"><div class="column main"><div class="custom-block"></div><div class="product-info-main"><div class="page-title-wrapper product">
+    <h1 class="page-title">
+        <span class="base" data-ui-id="page-title-wrapper" itemprop="name"><%=  @product.name %></span>    </h1>
+    </div>
+<div class="product-reviews-summary empty">
+    <div class="reviews-actions">
+        <a class="action add" href="http://www.newsmartwave.net/magento2/porto/demo4_en/catalog/product/view/_ignore_category/1/id/2103/s/men-s-t-shirt-2/#review-form" target="_parent">
+            Be the first to review this product        </a>
+    </div>
+</div>
+
+<div class="product attribute overview">
+        <div class="value" itemprop="description"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div>
+</div>
+<div class="product-info-price"><div class="price-box price-final_price" data-role="priceBox" data-product-id="2103">
+    
+
+<span class="price-container price-final_price tax weee" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+        <span class="price-wrapper " itemprop="price"><span class="price">$<%= @product.price %></span></span>
+                <meta itemprop="priceCurrency" content="USD">
+    </span>
+
+</div><div class="product-info-stock-sku">
+            <div class="stock available" title="Availability">
+            <% if @product.in_stock? %>
+              <span>In stock</span>
+            <% else %>
+              <span>Currently out of stock</span>
+            <% end %>
+        </div>
+    
+<div class="product attribute sku">
+    <strong class="type">SKU</strong>    <div class="value" itemprop="sku"><%= @product.sku %></div>
+</div>
+</div></div>
+
+<div class="product-add-form">
+    <%= form_for :order, url: populate_orders_path, remote: true do |f| %>
+        <% if @product.variants_and_option_values(current_currency).any? %>
+          <div id="product-variants" class="col-md-6">
+            <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+            <ul class="list-group">
+              <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+                <li>
+                  <%= radio_button_tag "variant_id", variant.id, index == 0,
+                      'data-price' => variant.price_in(current_currency).money, 
+                      'data-in-stock' => variant.can_supply?
+                  %>
+                  <%= label_tag "variant_id_#{ variant.id }" do %>
+                    <span class="variant-description">
+                      <%= variant_options variant %>
+                    </span>
+                    <% if variant_price variant %>
+                      <span class="price diff"><%= variant_price variant %></span>
+                    <% end %>
+                    <% unless variant.can_supply? %>
+                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                    <% end %>
+                  <% end %>
+                </li>
+              <% end%>
+            </ul>
+          </div>
+        <% else %>
+          <%= hidden_field_tag "variant_id", @product.master.id %>
+        <% end %>
+        <%= hidden_field_tag :quantity, 1 %>
+        <div class="box-tocart">
+        <div class="fieldset">
+            <div class="actions">
+                <% if @product.can_supply? %>
+                    <div>
+                        <div class="fieldset">
+                            <div class="actions">
+                                <%= button_tag class: 'btn action primary tocart', id: 'add-to-cart-button', type: :submit do %>
+                                  <%= Spree.t(:add_to_cart) %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% else %>
+                    <div>
+                        <div class="fieldset">
+                            <p>This product is currently unavailable.</p>
+                            <div class="actions">
+                                <%= button_tag class: 'btn action primary tocart', id: 'add-to-cart-button', type: :submit, disabled: true do %>
+                                  <%= Spree.t(:add_to_cart) %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+<div class="box-gotoproduct">
+    <div class="fieldset">
+        <div class="actions">
+            <%= link_to product_path(@product), title: "Go To Product", class: "action primary", id: "product-gotoproduct-button", target: '_parent' do %>
+                <span>Go To Product</span>
+            <% end %>
+        </div>
+    </div>
+</div>        
+<% end %>
+</div>
+</div>
+
+<div class="product media">
+    <div class="gallery-placeholder fotorama" data-gallery-role="gallery-placeholder" data-minheight="568px">
+        <%= large_image(@product, itemprop: "image") %>
+    </div>
+
+
+<div class="magnifier-preview magnify-hidden" data-gallery-role="magnifier" id="preview" style="display: none;"></div>
+</div>
+
+</div><input name="form_key" type="hidden" value="PmX14XjRMyreq47T">
+
+    <script data-role="msrp-popup-template" type="text/x-magento-template">
+    <div id="map-popup-click-for-price" class="map-popup">
+        <div class="popup-header">
+            <strong class="title" id="map-popup-heading-price"></strong>
+        </div>
+        <div class="popup-content">
+            <div class="map-info-price" id="map-popup-content">
+                <div class="price-box">
+                    <div class="map-msrp" id="map-popup-msrp-box">
+                        <span class="label">Price</span>
+                        <span class="old-price map-old-price" id="map-popup-msrp">
+                            <span class="price"></span>
+                        </span>
+                    </div>
+                    <div class="map-price" id="map-popup-price-box">
+                        <span class="label">Actual Price</span>
+                        <span id="map-popup-price" class="actual-price"></span>
+                    </div>
+                </div>
+                <form action="" method="POST" id="product_addtocart_form_from_popup" class="map-form-addtocart">
+                    <input type="hidden" name="product" class="product_id" value="" id="map-popup-product-id"/>
+                    <button type="button"
+                            title="Add to Cart"
+                            class="action tocart primary"
+                            id="map-popup-button">
+                        <span>Add to Cart</span>
+                    </button>
+                    <div class="additional-addtocart-box">
+                                            </div>
+                </form>
+            </div>
+            <div class="map-text" id="map-popup-text">
+                Our price is lower than the manufacturer's &quot;minimum advertised price.&quot; As a result, we cannot show you the price in catalog or the product page. <br /><br /> You have no obligation to purchase the product once you know the price. You can simply remove the item from your cart.            </div>
+        </div>
+    </div>
+    </script>
+    <script data-role="msrp-info-template" type="text/x-magento-template">
+    <div id="map-popup-what-this" class="map-popup">
+        <div class="popup-header">
+            <strong class="title" id="map-popup-heading-what-this"></strong>
+        </div>
+        <div class="popup-content">
+            <div class="map-help-text" id="map-popup-text-what-this">
+                Our price is lower than the manufacturer's &quot;minimum advertised price.&quot; As a result, we cannot show you the price in catalog or the product page. <br /><br /> You have no obligation to purchase the product once you know the price. You can simply remove the item from your cart.            </div>
+        </div>
+    </div>
+    </script>
+
+        </div></div></main>
+</div>
+
+<div id="added-notice" class="modals-wrapper modal fade">
+
+<aside class="modal-popup _show" data-role="modal" data-type="popup" tabindex="0" style="z-index: 900;">
+    <div data-role="focusable-start" tabindex="0"></div>
+    <div class="modal-inner-wrap" data-role="focusable-scope">
+        <header class="modal-header">
+            
+            <h1 class="modal-title" data-role="title">You added <%= @product.name %> to your shopping cart.</h1>
+            <button class="action-close close" data-dismiss="modal" type="button">
+                <span>Close</span>
+            </button>
+        </header>
+        <div class="modal-content" data-role="content"><div></div></div>
+        
+        <footer class="modal-footer">
+            
+            <button class="action primary continue" type="button" data-dismiss="modal"><span>Continue Shopping</span></button>
+            
+            <button class="action primary checkout" data-url="<%= checkout_path %>" type="button"><span>Go To Checkout</span></button>
+            
+        </footer>
+        
+    </div>
+    <div data-role="focusable-end" tabindex="0"></div>
+</aside></div>

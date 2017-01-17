@@ -47,7 +47,7 @@ $ ->
     items: 1
     lazyLoad: true
 
-    $('.weltpixel-quickview').bind 'click', ->
+    $('.weltpixel-quickview').on 'click', ->
       prodUrl = $(this).attr('data-quickview-url')
       if prodUrl.length
         quickview.displayContent prodUrl
@@ -55,6 +55,40 @@ $ ->
 
   $(".sw-megamenu").swMegamenu();
   $('.gallery-placeholder').fotorama();
+
+  $('.qty-inc').on 'click', ->
+    field = $(this).closest('.qty').find('input.qty')
+    field.val(parseInt(field.val()) + 1)
+
+  $('.qty-dec').on 'click', ->
+    field = $(this).closest('.qty').find('input.qty')
+    field.val(parseInt(field.val()) - 1) if field.val() > 1
+
+  $('.tocart').on 'click', ->
+    $(this).prop('disabled', true)
+    $(this).html('Adding...')
+
+    url = $(this).closest('form').attr('action')
+    $.ajax(
+      url: url
+    ).fail(->
+      alert('error');
+    ).done (data) =>
+      $(this).html('Added')
+      setTimeout(=>
+        $(this).prop('disabled', false)
+        $(this).html('Add to Cart')
+        $('.message-success').removeClass('hide')
+        $('#added-notice').modal();
+      , 2000)
+      return
+
+  $("#added-notice .action-close, .action.primary.continue").on 'click', ->
+    $('#added-notice').modal('hide');
+
+  $(".action.primary.checkout").on 'click', ->
+    url = $(this).data('url')
+    window.open(url,'_parent');
 
 window.weltpixel_quickview =
   'baseUrl': 'http://www.newsmartwave.net/magento2/porto/demo4_en/'

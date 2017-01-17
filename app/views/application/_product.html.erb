@@ -22,23 +22,51 @@
             <div class="price-box price-final_price" data-role="priceBox" data-product-id="2102">
                 <span class="price-container price-final_price tax weee">
                 <span id="product-price-2102" data-price-amount="75" data-price-type="finalPrice" class="price-wrapper ">
-                <span class="price">$<%= product.price %></span>    </span>
+                <span class="price"><%= display_price(product) %></span>    </span>
                 </span>
             </div>
-            <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="http://www.newsmartwave.net/magento2/porto/demo4_en/weltpixel_quickview/catalog_product/view/id/2102/" href="javascript:void(0);"><span><em class="porto-icon-eye"></em>Quickview</span></a>                        
+            <a class="weltpixel-quickview weltpixel_quickview_button_v2" data-quickview-url="<%= quickview_path(product) %>" href="javascript:void(0);"><span><em class="porto-icon-eye"></em>Quickview</span></a>                        
             <div class="product-item-inner">
                 <div class="product actions product-item-actions">
-                    <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="action towishlist actions-secondary" title="Wish List" aria-label="Wish List" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/wishlist\/index\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;2102&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}" data-action="add-to-wishlist" role="button">
-                    <span>Wish List</span>
+                    <a href="#" class="action towishlist actions-secondary" title="Wish List" aria-label="Wish List" data-action="add-to-wishlist" role="button">
+                        <span>Wish List</span>
                     </a>
                     <div class="actions-primary">
-                        <form data-role="tocart-form" action="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/add/uenc/aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu/product/2102/" method="post">
-                            <input type="hidden" name="product" value="2102">
-                            <input type="hidden" name="uenc" value="aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2VuL2NoZWNrb3V0L2NhcnQvYWRkL3VlbmMvYUhSMGNEb3ZMM2QzZHk1dVpYZHpiV0Z5ZEhkaGRtVXVibVYwTDIxaFoyVnVkRzh5TDNCdmNuUnZMMlJsYlc4MFgyVnUvcHJvZHVjdC8yMTAyLw,,">
-                            <input name="form_key" type="hidden" value="chtq2Pnb4Wvgd7R9">                                            <button type="submit" title="Add to Cart" class="action tocart primary">
-                            <span>Add to Cart</span>
+                        <%= form_for :order, url: populate_orders_path do |f| %>
+
+                            <% if product.variants_and_option_values(current_currency).any? %>
+                              <div id="product-variants" class="col-md-6">
+                                <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
+                                <ul class="list-group">
+                                  <% product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
+                                    <li>
+                                      <%= radio_button_tag "variant_id", variant.id, index == 0,
+                                          'data-price' => variant.price_in(current_currency).money, 
+                                          'data-in-stock' => variant.can_supply?
+                                      %>
+                                      <%= label_tag "variant_id_#{ variant.id }" do %>
+                                        <span class="variant-description">
+                                          <%= variant_options variant %>
+                                        </span>
+                                        <% if variant_price variant %>
+                                          <span class="price diff"><%= variant_price variant %></span>
+                                        <% end %>
+                                        <% unless variant.can_supply? %>
+                                          <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                                        <% end %>
+                                      <% end %>
+                                    </li>
+                                  <% end%>
+                                </ul>
+                              </div>
+                            <% else %>
+                              <%= hidden_field_tag "variant_id", product.master.id %>
+                            <% end %>
+
+                            <button type="submit" title="Add to Cart" class="action tocart primary">
+                                <span>Add to Cart</span>
                             </button>
-                        </form>
+                        <% end %>
                     </div>
                     <a href="http://www.newsmartwave.net/magento2/porto/demo4_en#" class="action tocompare actions-secondary" title="Compare" aria-label="Compare" data-post="{&quot;action&quot;:&quot;http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/catalog\/product_compare\/add\/&quot;,&quot;data&quot;:{&quot;product&quot;:&quot;2102&quot;,&quot;uenc&quot;:&quot;aHR0cDovL3d3dy5uZXdzbWFydHdhdmUubmV0L21hZ2VudG8yL3BvcnRvL2RlbW80X2Vu&quot;}}" role="button">
                     <span>Compare</span>
