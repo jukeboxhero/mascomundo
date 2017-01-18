@@ -15,6 +15,7 @@ Spree::TaxonsController.class_eval do
       @taxonomies = Spree::Taxonomy.includes(root: :children)
 
       @products = @products.select('spree_products.*, spree_prices.amount').reorder('').send(sorting_scope)
+      @products = @products.price_between(params[:minprice], params[:maxprice]) if params.key?(:minprice) && params.key?(:maxprice)
 
 
       respond_to do |format|

@@ -45,6 +45,18 @@ $ ->
   $('body').on 'change', '.toolbar-sorter #sorter', ->
     activateFilter()
 
+  $('#ln_price_slider').slider
+    range: true 
+    values: [ 0, 100 ]
+    slide: ( event, ui ) ->
+      values = $.map ui.values, (x) -> 
+        return x * 5
+      $('#ln_price_text').html("$#{values[0]}.00 - $#{values[1]}.00");
+      $('#ln_price_text').data('minprice', values[0])
+      $('#ln_price_text').data('maxprice', values[1])
+    change: (event, ui) ->
+      activateFilter()
+
   activateListMode = =>
     toggleListMode('list');
 
@@ -56,7 +68,11 @@ $ ->
     url = window.location.href.split('?')[0] + '?' + $("#property_form").serialize();
     attrChar = ''
     attrChar = '&' if $("#property_form").serialize().length > 0
-    url += attrChar + "sorting=" + $('#sorter').val()
+    params   = 
+      sorting: $('#sorter').val()
+      minprice: $('#ln_price_text').data('minprice')
+      maxprice: $('#ln_price_text').data('maxprice')
+    url += attrChar + $.param(params)
     $.get url, ((data) ->
       $("#ln_overlay").hide();
       output = ''
@@ -91,3 +107,9 @@ $ ->
     wrapper = $('#layer-product-list').find('.products.wrapper')
     wrapper.removeClass('grid list products-grid products-list');
     wrapper.addClass(mode + ' products-' + mode);
+
+  if $('#ln_price_text').data('minprice') > 0 || $('#ln_price_slider').data('maxprice') < 500
+    minprice = $('#ln_price_text').data('minprice') || 0
+    maxprice = $('#ln_price_text').data('maxprice') || 500
+    $('#ln_price_slider').slider( "values", [ minprice/5, maxprice/5 ] )
+    $('#ln_price_text').html("$#{minprice}.00 - $#{maxprice}.00");

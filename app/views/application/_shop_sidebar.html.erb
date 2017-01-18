@@ -87,7 +87,7 @@
                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" style="left: 0%;"></a>
                                         <a class="ui-slider-handle ui-state-default ui-corner-all" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" style="left: 100%;"></a>
                                     </div>
-                                    <div id="ln_price_text">$29.00 - $75.00</div>
+                                    <div id="ln_price_text" data-minprice="<%= params[:minprice] || 0 %>" data-maxprice="<%= params[:maxprice] || 500 %>">$0.00 - $500.00</div>
                                 </div>
                             </li>
                         </ol>
