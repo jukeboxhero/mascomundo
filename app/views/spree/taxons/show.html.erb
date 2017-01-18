@@ -7,7 +7,7 @@
 
     <div class="columns">
         <div class="column main">
-            <%= render partial: "shop_body" %>
+            <%= render partial: "shop_body", locals: { sort: params[:sorting] } %>
         </div>
         <%= render partial: "shop_sidebar" %>
     </div>

@@ -1,4 +1,5 @@
 Spree::TaxonsController.class_eval do
+    helper_method :sorting_param
 
     def show
       @taxon = Spree::Taxon.friendly.find(params[:id])
@@ -13,12 +14,19 @@ Spree::TaxonsController.class_eval do
 
       @taxonomies = Spree::Taxonomy.includes(root: :children)
 
+      @products = @products.select('spree_products.*, spree_prices.amount').reorder('').send(sorting_scope)
+
+
       respond_to do |format|
         format.html
         format.json {
-          render json: { filters: @filters, html: render_to_string(partial: 'shop_body.html.erb') }
+          render json: { filters: @filters, html: render_to_string(partial: 'shop_body.html.erb', locals: { sort: params[:sorting] }) }
         }
       end
+    end
+
+    def sorting_param
+      params[:sorting].try(:to_sym) || default_sorting
     end
 
     def filter_products
@@ -31,6 +39,20 @@ Spree::TaxonsController.class_eval do
           end
         end
       end
+    end
+
+    private
+
+    def sorting_scope
+      allowed_sortings.include?(sorting_param) ? sorting_param : default_sorting
+    end
+
+    def default_sorting
+      :ascend_by_updated_at
+    end
+
+    def allowed_sortings
+      [:descend_by_master_price, :ascend_by_master_price, :ascend_by_updated_at]
     end
 
 end

@@ -29,7 +29,7 @@
                                 <li class="item">
                                     <span class="filter-label"><%= name %></span>
                                     <span class="filter-value"><%= values.join(', ') %></span>
-                                    <a class="action remove" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html" title="Remove Color Red">
+                                    <a class="action remove" href="#" data-filter="<%= name %>" title="Remove <%= name %>">
                                         <span>Remove This Item</span>
                                     </a>
                                 </li>
@@ -47,7 +47,7 @@
 
             <form id="property_form">
                 <% @properties.each do |property| %>
-                    <div class="filter-options" id="narrow-by-list" data-role="content" role="tablist">
+                    <div class="filter-options" id="narrow-by-list" data-role="content" data-property="<%= property.name %>" role="tablist">
                         <div data-role="collapsible" class="filter-options-item active" role="presentation" data-collapsible="true">
                             <div data-role="title" class="filter-options-title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0"><%= property.name %></div>
                             <div data-role="content" class="filter-options-content" role="tabpanel" aria-hidden="true" style="display: none;">
@@ -58,7 +58,7 @@
                                         <% values.each do |product_property| %>
                                             <li class="item">
                                                 <a href="#">
-                                                    <input type="checkbox" class="property" name="filters[<%= property.name %>][<%=product_property.value %>]"> <%= product_property.value %>
+                                                    <input type="checkbox" class="property" name="filters[<%= property.name %>][<%=product_property.value %>]" <%= 'checked' if params[:filters].try('[]', property.name).try('[]',product_property.value) %>> <%= product_property.value %>
                                                     <span class="count"><%= product_properties.select { |a| a.value == product_property.value }.count %>
                  <span class="filter-count-label">
                  item</span>

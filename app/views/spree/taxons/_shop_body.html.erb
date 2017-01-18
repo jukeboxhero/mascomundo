@@ -33,16 +33,13 @@
                         <div class="toolbar-sorter sorter">
                             <label class="sorter-label" for="sorter">Sort By</label>
                             <select id="sorter" data-role="sorter" class="sorter-options">
-                                <option value="position" selected="selected">
-                                    Position </option>
-                                <option value="name">
-                                    Product Name </option>
-                                <option value="price">
-                                    Price </option>
+                                <option value="ascend_by_updated_at" <%= 'selected="selected"' if sort == 'ascend_by_updated_at' %>>
+                                    Most Recently Added </option>
+                                <option value="descend_by_master_price" <%= 'selected="selected"' if sort == 'descend_by_master_price' %>>
+                                    Price: High to Low </option>
+                                <option value="ascend_by_master_price" <%= 'selected="selected"' if sort == 'ascend_by_master_price' %>>
+                                    Price: Low to High </option>
                             </select>
-                            <a title="Set Descending Direction" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc">
-                                <span>Set Descending Direction</span>
-                            </a>
                         </div>
                     </div>
                     <div class="products wrapper grid columns4  products-grid">
@@ -109,50 +106,7 @@
                         <% end %>
                       </ol>
                     </div>
-                      <div class="toolbar toolbar-products">
-                          <div class="modes">
-                              <strong class="modes-label" id="modes-label">View as</strong>
-                              <strong title="Grid" class="modes-mode active mode-grid" data-value="grid">
-                                                                                                        <span>Grid</span>
-                                                                                                      </strong>
-                              <a class="modes-mode mode-list" title="List" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" data-role="mode-switcher" data-value="list" id="mode-list" aria-labelledby="modes-label mode-list">
-                                  <span>List</span>
-                              </a>
-                          </div>
-                          <p class="toolbar-amount" id="toolbar-amount">
-                              <span class="toolbar-number">5</span> Items
-                          </p>
-                          <div class="field limiter">
-                              <label class="label" for="limiter">
-                                  <span>Show</span>
-                              </label>
-                              <div class="control">
-                                  <select id="limiter" data-role="limiter" class="limiter-options">
-                                      <option value="12" selected="selected">
-                                          12 </option>
-                                      <option value="24">
-                                          24 </option>
-                                      <option value="36">
-                                          36 </option>
-                                  </select>
-                              </div>
-                              <span class="limiter-text">per page</span>
-                          </div>
-                          <div class="toolbar-sorter sorter">
-                              <label class="sorter-label" for="sorter">Sort By</label>
-                              <select id="sorter" data-role="sorter" class="sorter-options">
-                                  <option value="position" selected="selected">
-                                      Position </option>
-                                  <option value="name">
-                                      Product Name </option>
-                                  <option value="price">
-                                      Price </option>
-                              </select>
-                              <a title="Set Descending Direction" href="http://www.newsmartwave.net/magento2/porto/demo4_en/fashion/women/tops-blouses.html?color=58#" class="action sorter-action sort-asc" data-role="direction-switcher" data-value="desc">
-                                  <span>Set Descending Direction</span>
-                              </a>
-                          </div>
-                      </div>
+                      
                         </div>
                         <script data-role="msrp-popup-template" type="text/x-magento-template">
                             <div id="map-popup-click-for-price" class="map-popup">

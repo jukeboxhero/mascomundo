@@ -21,6 +21,9 @@ $ ->
       checkBoxes.prop("checked", !checkBoxes.prop("checked"));
     activateFilter();
 
+  $('body').on 'click', '.applied-filters .action.remove', (e) ->
+    removeFilter($(this).data('filter'));
+
   $('.filter-options-title').click ->
     $(this).parent().toggleClass('active');
 
@@ -39,6 +42,8 @@ $ ->
     e.preventDefault();
     clearFilters();
 
+  $('body').on 'change', '.toolbar-sorter #sorter', ->
+    activateFilter()
 
   activateListMode = =>
     toggleListMode('list');
@@ -49,11 +54,14 @@ $ ->
   activateFilter = =>
     $("#ln_overlay").show();
     url = window.location.href.split('?')[0] + '?' + $("#property_form").serialize();
+    attrChar = ''
+    attrChar = '&' if $("#property_form").serialize().length > 0
+    url += attrChar + "sorting=" + $('#sorter').val()
     $.get url, ((data) ->
       $("#ln_overlay").hide();
       output = ''
       $.each data.filters, (key, value) ->
-        output += "<li class='item'><span class='filter-label'>#{key}</span><span class='filter-value'>#{value.join(', ')}</span><a class='action remove' href='#' title='Remove Color Red'>
+        output += "<li class='item'><span class='filter-label'>#{key}</span><span class='filter-value'>#{value.join(', ')}</span><a class='action remove' data-filter='#{key}' href='#' title='Remove #{key}'>
                             <span>Remove This Item</span>
                         </a></li>"
         return
@@ -68,6 +76,10 @@ $ ->
       window.history.pushState({}, "", url);
       return
     ), 'json'
+
+  removeFilter = (filter) =>
+    $('.filter-options[data-property="' + filter + '"]').find('.items .item input:checkbox').removeAttr('checked')
+    activateFilter()
 
   clearFilters = =>
     $('.filter-options .items .item input:checkbox').removeAttr('checked')

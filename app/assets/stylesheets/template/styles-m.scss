@@ -3361,7 +3361,7 @@ select {
     appearance: none;
     border: 1px solid #ccc;
     height: 32px;
-    background: #fff url('../images/select-bg.svg') no-repeat 100% 48%;
+    background: #fff image-url('select-bg.svg') no-repeat 100% 48%;
     background-size: 30px 60px;
     padding-right: 25px;
     text-indent: .01em;
