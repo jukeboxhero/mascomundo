@@ -43,6 +43,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
+    acts_as_reviewable (0.0.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.3)
@@ -329,6 +330,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_reviewable
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)
