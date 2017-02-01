@@ -11,5 +11,54 @@
 }
 
 .product-social-links .addthis_inline_share_toolbox {
-    margin: 5px 0 0 -2px !important;
+  margin: 5px 0 0 -2px !important;
+}
+
+.fieldset .review-legend.legend.review {
+  margin-bottom: 10px
+}
+
+#review-form {
+  .review-fields {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+  }
+}
+.review-form-actions {
+  opacity: 0;
+  transition: all 0.5s ease-in 0.3s;
+}
+
+/* -----------------------------------------------------------------------------
+
+  COMPENENTS - RATING
+  
+----------------------------------------------------------------------------- */
+
+#rating {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 35px 0px;
+}
+
+.c-rating__item {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 24px;
+      -ms-flex: 0 0 24px;
+          flex: 0 0 24px;
+  height: 24px;
+  background: image_url("stars.svg");
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+.c-rating__item:hover,
+.c-rating__item.is-active {
+  background-position: -24px 0;
 }

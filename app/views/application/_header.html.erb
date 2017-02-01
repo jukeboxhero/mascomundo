@@ -622,7 +622,7 @@
                         <span class="text">My Cart</span>
                         <span class="counter qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false }, blockLoader: isLoading">
                             <span class="counter-number">
-                                <%= current_order.item_count %>
+                                <%= current_order.try(:item_count) || 0 %>
                             </span>
                             <span class="counter-label">
                                 <!-- ko i18n: 'items' --><span>items</span><!-- /ko -->
