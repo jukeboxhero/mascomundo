@@ -1,56 +1,3 @@
-<!--<% @body_id = 'product-details' %>
-
-<% cache cache_key_for_product do %>
-  <div data-hook="product_show" class="row" itemscope itemtype="https://schema.org/Product">
-    <div class="col-md-4 col-sm-5" data-hook="product_left_part">
-      <div data-hook="product_left_part_wrap">
-        <div id="product-images" data-hook="product_images">
-          <div id="main-image" class="panel panel-default" data-hook>
-            <div class="panel-body text-center">
-              <%= product_image(@product, itemprop: "image") %>
-            </div>
-          </div>
-          <div id="thumbnails" data-hook>
-            <%= render partial: 'thumbnails' %>
-          </div>
-        </div>
-
-        <div data-hook="product_properties">
-          <%= render partial: 'properties' %>
-        </div>
-
-        <div data-hook="promotions">
-          <%= render partial: 'promotions' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-8 col-sm-7" data-hook="product_right_part">
-      <div data-hook="product_right_part_wrap">
-        <div id="product-description" data-hook="product_description">
-          <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
-
-          <div class="well" itemprop="description" data-hook="description">
-            <%= product_description(@product) %>
-          </div>
-
-          <div id="cart-form" data-hook="cart_form">
-            <%= render partial: 'cart_form' %>
-          </div>
-        </div>
-
-        <div id="taxon-crumbs" class=" five " data-hook="product_taxons">
-          <%= render partial: 'taxons' %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
-
-
-
--->
 <% @body_class = "catalog-product-view product-men-s-t-shirt-1 page-layout-2columns-right layout-fullwidth wide" %>
 
     <main id="maincontent" class="page-main">
@@ -196,10 +143,10 @@
                 <div class="product info detailed ">
                     <div class="product data items" role="tablist">
                         <div class="data item title active" aria-labeledby="tab-label-product.info.description-title" data-role="collapsible" id="tab-label-product.info.description" role="tab" data-collapsible="true" aria-controls="product.info.description" aria-selected="false" aria-expanded="true" tabindex="0">
-                            <a class="data switch" tabindex="-1" data-toggle="switch" href="http://www.newsmartwave.net/magento2/porto/demo4_en/catalog/product/view/id/2102/s/men-s-t-shirt-1/#product.info.description" id="tab-label-product.info.description-title">
+                            <a class="data switch" tabindex="-1" data-toggle="switch" href="#">
                             Details                    </a>
                         </div>
-                        <div class="data item content" id="product.info.description" data-role="content" aria-labelledby="tab-label-product.info.description" role="tabpanel" aria-hidden="false">
+                        <div class="data item content" id="description" data-role="content" aria-labelledby="tab-label-product.info.description" role="tabpanel" aria-hidden="false">
                             <div class="product attribute description">
                                 <div class="value">
                                     <%= @product.description %>
@@ -207,7 +154,7 @@
                             </div>
                         </div>
                         <div class="data item title" aria-labeledby="tab-label-reviews-title" data-role="collapsible" id="tab-label-reviews" role="tab" data-collapsible="true" aria-controls="reviews" aria-selected="false" aria-expanded="false" tabindex="0">
-                            <a class="data switch" tabindex="-1" data-toggle="switch" href="http://www.newsmartwave.net/magento2/porto/demo4_en/catalog/product/view/id/2102/s/men-s-t-shirt-1/#reviews" id="tab-label-reviews-title">
+                            <a class="data switch" tabindex="-1" data-toggle="switch" href="#" id="tab-label-reviews-title">
                             Reviews                    </a>
                         </div>
                         <div class="data item content" id="reviews" data-role="content" aria-labelledby="tab-label-reviews" role="tabpanel" aria-hidden="true" style="display: none;">

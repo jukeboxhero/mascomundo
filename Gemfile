@@ -58,7 +58,6 @@ gem 'spree_auth_devise', '~> 3.1.0'
 gem 'spree_gateway', '~> 3.1.0'
 
 gem 'magnific-popup-rails', '~> 1.1.0'
-gem 'acts_as_reviewable'
 
 gem "fotoramajs"
 gem 'jquery-turbolinks'

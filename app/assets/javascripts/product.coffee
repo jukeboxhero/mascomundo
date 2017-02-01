@@ -90,6 +90,15 @@ $ ->
     url = $(this).data('url')
     window.open(url,'_parent');
 
+  $('.product.data.items').find('.data.item.title').on 'click', (e) ->
+    e.preventDefault()
+    $('.product.data.items').find('.data.item.content').hide()
+    $('.product.data.items').find('.data.item.title.active').removeClass('active')
+    $(this).addClass('active')
+    id = $(this).attr('id')
+    tabpanel = $('[aria-labelledby="' + id + '"]')
+    tabpanel.show()
+
 window.weltpixel_quickview =
   'baseUrl': 'http://www.newsmartwave.net/magento2/porto/demo4_en/'
   'closeSeconds': '5'
