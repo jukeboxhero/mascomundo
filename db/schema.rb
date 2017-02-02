@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20170201023558) do
     t.string   "reviewable_type", limit: 255
     t.integer  "reviewer_id",     limit: 4
     t.string   "reviewer_type",   limit: 255
-    t.integer  "rating",          limit: 4
+    t.float    "rating",          limit: 24
     t.string   "role",            limit: 255,   default: "reviews"
     t.datetime "created_at"
     t.datetime "updated_at"

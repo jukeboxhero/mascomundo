@@ -9,9 +9,12 @@ module ActsAsReviewable
 
     def self.included(review_model)
       review_model.extend Finders
-      review_model.scope :in_order, review_model.order('created_at ASC')
-      review_model.scope :recent, review_model.order('created_at DESC')
-
+      review_model.scope :in_order, -> {
+        review_model.order('created_at ASC')
+      }
+      review_model.scope :recent, -> { 
+        review_model.order('created_at DESC')
+      }
     end
 
     def is_review_type?(type)

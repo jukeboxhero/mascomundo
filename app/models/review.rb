@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
   belongs_to :reviewable, :polymorphic => true
   belongs_to :reviewer, :polymorphic => true
 
-  default_scope :order => 'created_at ASC'
+  default_scope { order('created_at ASC') }
 
   # NOTE: install the acts_as_votable plugin if you
   # want votes on reviews.

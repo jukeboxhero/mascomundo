@@ -617,65 +617,65 @@
                         </div>
                     </div>
                 </div>
-                <div data-block="minicart" class="minicart-wrapper">
-                    <a class="action showcart" href="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/" data-bind="scope: &#39;minicart_content&#39;">
-                        <span class="text">My Cart</span>
-                        <span class="counter qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false }, blockLoader: isLoading">
-                            <span class="counter-number">
-                                <%= current_order.try(:item_count) || 0 %>
+                <% if defined? current_order %>
+                    <div data-block="minicart" class="minicart-wrapper">
+                        <a class="action showcart" href="http://www.newsmartwave.net/magento2/porto/demo4_en/checkout/cart/" data-bind="scope: &#39;minicart_content&#39;">
+                            <span class="text">My Cart</span>
+                            <span class="counter qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false }, blockLoader: isLoading">
+                                <span class="counter-number">
+                                    <%= current_order.try(:item_count) || 0 %>
+                                </span>
+                                <span class="counter-label">
+                                    <!-- ko i18n: 'items' --><span>items</span><!-- /ko -->
+                                </span>
                             </span>
-                            <span class="counter-label">
-                                <!-- ko i18n: 'items' --><span>items</span><!-- /ko -->
-                            </span>
-                        </span>
-                    </a>
-                    <script>
-                        window.checkout = {"shoppingCartUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/checkout\/cart\/","checkoutUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/checkout\/","updateItemQtyUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/checkout\/sidebar\/updateItemQty\/","removeItemUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/checkout\/sidebar\/removeItem\/","imageTemplate":"Magento_Catalog\/product\/image_with_borders","baseUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/","minicartMaxItemsVisible":5,"customerLoginUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/customer\/account\/login\/","isRedirectRequired":false,"autocomplete":"off","captcha":{"user_login":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/captcha\/refresh\/","isRequired":false},"guest_checkout":{"isCaseSensitive":false,"imageHeight":50,"imageSrc":"","refreshUrl":"http:\/\/www.newsmartwave.net\/magento2\/porto\/demo4_en\/captcha\/refresh\/","isRequired":false}}};
-                    </script>
-                    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front mage-dropdown-dialog" tabindex="-1" role="dialog" aria-describedby="ui-id-5" style="display: none;">
-                        <div class="block block-minicart empty ui-dialog-content ui-widget-content" data-role="dropdownDialog" id="ui-id-5" style="display: block;">
-                            <div id="minicart-content-wrapper" data-bind="scope: &#39;minicart_content&#39;">
-                                <!-- ko template: getTemplate() -->
-                                <div class="block-title">
-                                    <strong>
-                                        <span class="text">
-                                            <!-- ko i18n: 'My Cart' --><span>My Cart</span><!-- /ko -->
-                                        </span>
-                                        <span class="qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false },
-                                            attr: { title: $t(&#39;Items in Cart&#39;) }" title="Items in Cart">
-                                            <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
-                                        </span>
-                                    </strong>
-                                </div>
-                                <div class="block-content">
-                                    <button type="button" id="btn-minicart-close" class="action close" data-action="close" data-bind="attr: { title: $t(&#39;Close&#39;) }" title="Close">
-                                        <span>
-                                            <!-- ko i18n: 'Close' --><span>Close</span><!-- /ko -->
-                                        </span>
-                                    </button>
-                                    <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
-                                    <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
-                                    <!-- ko ifnot: getCartParam('summary_count') -->
-                                    <strong class="subtitle empty" data-bind="visible: closeSidebar()">
-                                        <!-- ko i18n: 'You have no items in your shopping cart.' --><span>You have no items in your shopping cart.</span><!-- /ko -->
-                                    </strong>
-                                    <!-- ko if: getCartParam('cart_empty_message') --><!-- /ko -->
-                                    <!-- /ko -->
-                                    <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
-                                    <div id="minicart-widgets" class="minicart-widgets">
-                                        <!-- ko foreach: getRegion('promotion') -->
-                                        <!-- ko template: getTemplate() -->
-                                        <!-- ko foreach: {data: elems, as: 'element'} --><!-- /ko -->
-                                        <!-- /ko -->
-                                        <!-- /ko -->
+                        </a>
+                        
+                        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front mage-dropdown-dialog" tabindex="-1" role="dialog" aria-describedby="ui-id-5" style="display: none;">
+                            <div class="block block-minicart empty ui-dialog-content ui-widget-content" data-role="dropdownDialog" id="ui-id-5" style="display: block;">
+                                <div id="minicart-content-wrapper" data-bind="scope: &#39;minicart_content&#39;">
+                                    <!-- ko template: getTemplate() -->
+                                    <div class="block-title">
+                                        <strong>
+                                            <span class="text">
+                                                <!-- ko i18n: 'My Cart' --><span>My Cart</span><!-- /ko -->
+                                            </span>
+                                            <span class="qty empty" data-bind="css: { empty: !!getCartParam(&#39;summary_count&#39;) == false },
+                                                attr: { title: $t(&#39;Items in Cart&#39;) }" title="Items in Cart">
+                                                <!-- ko text: getCartParam('summary_count') --><!-- /ko -->
+                                            </span>
+                                        </strong>
                                     </div>
+                                    <div class="block-content">
+                                        <button type="button" id="btn-minicart-close" class="action close" data-action="close" data-bind="attr: { title: $t(&#39;Close&#39;) }" title="Close">
+                                            <span>
+                                                <!-- ko i18n: 'Close' --><span>Close</span><!-- /ko -->
+                                            </span>
+                                        </button>
+                                        <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+                                        <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+                                        <!-- ko ifnot: getCartParam('summary_count') -->
+                                        <strong class="subtitle empty" data-bind="visible: closeSidebar()">
+                                            <!-- ko i18n: 'You have no items in your shopping cart.' --><span>You have no items in your shopping cart.</span><!-- /ko -->
+                                        </strong>
+                                        <!-- ko if: getCartParam('cart_empty_message') --><!-- /ko -->
+                                        <!-- /ko -->
+                                        <!-- ko if: getCartParam('summary_count') --><!-- /ko -->
+                                        <div id="minicart-widgets" class="minicart-widgets">
+                                            <!-- ko foreach: getRegion('promotion') -->
+                                            <!-- ko template: getTemplate() -->
+                                            <!-- ko foreach: {data: elems, as: 'element'} --><!-- /ko -->
+                                            <!-- /ko -->
+                                            <!-- /ko -->
+                                        </div>
+                                    </div>
+                                    <!-- ko foreach: getRegion('sign-in-popup') --><!-- /ko -->
+                                    <!-- /ko -->
                                 </div>
-                                <!-- ko foreach: getRegion('sign-in-popup') --><!-- /ko -->
-                                <!-- /ko -->
                             </div>
                         </div>
                     </div>
-                </div>
+                <% end %>
             </div>
         </div>
     </div>

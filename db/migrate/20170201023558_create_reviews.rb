@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text :review
       t.references :reviewable, :polymorphic => true
       t.references  :reviewer,  :polymorphic => true
-      t.integer :rating
+      t.float :rating
       t.string :role, :default => "reviews"
       t.timestamps
     end
